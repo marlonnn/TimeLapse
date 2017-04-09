@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevComponents.DotNetBar;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,10 +12,10 @@ using TimeLapse.DBADO;
 
 namespace TimeLapse
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Office2007RibbonForm
     {
         private DBADOFactory dbADOFactory;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             this.Load += Form1_Load;

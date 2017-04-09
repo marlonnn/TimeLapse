@@ -1,6 +1,6 @@
 ﻿namespace TimeLapse
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,9 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.SuspendLayout();
+            // 
+            // MainForm
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
