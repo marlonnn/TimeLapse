@@ -3,7 +3,7 @@
 <objects xmlns='http://www.springframework.net'
   xmlns:db="http://www.springframework.net/database">
 
-  <db:provider id="dbProvider" provider="MySql.Data.MySqlClient"
+  <db:provider id="dbProvider" provider="MySql-5.2.3"
                connectionString="server=localhost;port=3306;database=timelapse;uid=root;password=root"/>
 
   <object id="adoTemplate" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
