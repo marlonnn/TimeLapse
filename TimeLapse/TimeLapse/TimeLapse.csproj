@@ -112,9 +112,32 @@
     </Compile>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Operation\Camera.cs" />
+    <Compile Include="Operation\CommandFactory.cs" />
+    <Compile Include="Operation\CommandQueue.cs" />
     <Compile Include="Operation\gclib.cs" />
     <Compile Include="Operation\HDSMobilityController.cs" />
     <Compile Include="Operation\IDSCamera.cs" />
+    <Compile Include="Operation\Command.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandMoveAbsolute.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandMoveExit.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandMoveHome.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandMoveStart.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandMoveZ.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandMoveY.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandMoveX.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandSetMoveResolutionZ.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandSetMoveResolutionY.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandSetMoveResolutionX.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandSetMoveSpeedZ.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandSetMoveSpeedY.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandSetMoveSpeedX.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandStartMoveZWithSpeed.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandStartMoveYWithSpeed.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandStartMoveXWithSpeed.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandStopMoveY.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandStopMoveZ.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandStopMoveX.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandStopMove.cs" />
     <Compile Include="Operation\MobilityController.cs" />
     <Compile Include="Res\MiniDumpForm.Designer.cs" />
     <Compile Include="SystemFunction\MessageBoxManager.cs" />
@@ -172,6 +195,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\log4net.xml" />
+    <Content Include="Config\spring.job.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\spring.operation.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\spring.ui.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -208,6 +239,7 @@
     <Content Include="Resources\SplashScreen.png" />
     <Content Include="System.Data.SQLite.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

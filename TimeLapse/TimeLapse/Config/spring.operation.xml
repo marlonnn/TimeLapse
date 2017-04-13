@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--复制此文档各种Ioc定义方式到需要的地方-->
+<objects xmlns="http://www.springframework.net">
+
+  <!--命令工厂-->
+  <object id="commandFactory" type="TimeLapse.Operation.CommandFactory, TimeLapse">
+    <property name="CommandQueue" ref="CommandQueue" />
+  </object>
+
+  <!--命令队列-->
+  <object id="CommandQueue" type="TimeLapse.Operation.CommandQueue, TimeLapse">
+  </object>
+
+  <object id="gclib" type="TimeLapse.Operation.Gclib, TimeLapse">
+  </object>
+
+  <object id="mobilityController" type="TimeLapse.Operation.HDSMobilityController, TimeLapse">
+    <property name="gclib" ref="gclib" />
+    <property name="ResolutionX" value="10000"/><!--光栅分辨率-->
+    <property name="ResolutionY" value="20000"/><!--光栅分辨率-->
+    <property name="ResolutionZ" value="20000"/><!--光栅分辨率-->
+    <property name="DEFAULT_IP_ADDRESS" value ="10.0.0.100"/><!--默认IP-->
+    <property name="AXIS_ENABLE" value ="SH"/><!--轴使能，使外界力不能移动轴+（A,B）-->
+    <property name="AXIS_RELEASE" value ="MO"/><!--释放 电机关断-->
+    <property name="STOP " value ="ST"/><!--停止所有动作-->
+    <property name="EXCUATE" value ="BG"/><!--执行动作-->
+    <property name="GO_HOME" value ="FIB"/><!--回零-->
+    <property name="AXIS_A" value ="A"/><!--代表X轴-->
+    <property name="AXIS_B" value ="B"/><!--代表Y轴-->
+    <property name="AXIS_C" value ="C"/><!--代表Z轴-->
+    <property name="GET_POS" value ="_TP"/><!--得到当前位置-->
+    <property name="GET_POS_ERROR" value ="_TE"/><!--得到当前位置误差-->
+    <property name="ABS_MOVE" value ="PA"/><!--绝对移动-->
+    <property name="RELATIVE_MOVE" value ="PR"/><!--相对移动-->
+    <property name="WATCH_OPERATOR" value ="MG "/><!--查看操作数-->
+    <property name="START_MOTION" value =" _BG"/><!--开始运动-->
+  </object>
+
+</objects>

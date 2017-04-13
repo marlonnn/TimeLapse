@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,40 +13,28 @@ namespace TimeLapse.Operation
     /// </summary>
     public class HDSMobilityController : MobilityController
     {
-        private static MobilityController s_mc = null;
-        private HDSMobilityController() { }
 
-        public static MobilityController getInstance()
-        {
-            if (s_mc == null)
-                s_mc = new HDSMobilityController();
-
-            return s_mc;
-        }
-
-        private Gclib gclib = null;
+        private Gclib gclib;
 
         #region 常用命令
         private float ResolutionX = 10000;//光栅分辨率
         private float ResolutionY = 20000;//光栅分辨率
         private float ResolutionZ = 20000;//光栅分辨率
-
-        public const string DEFAULT_IP_ADDRESS = "10.0.0.100";//默认IP      
-        public const string AXIS_ENABLE = "SH";//轴使能，使外界力不能移动轴+（A,B）
-        public const string AXIS_RELEASE = "MO";//释放 电机关断
-        public const string STOP = "ST";//停止所有动作
-        public const string EXCUATE = "BG";//执行动作
-        public const string GO_HOME = "FIB";//回零
-        public const string AXIS_A = "A";//代表X轴
-        public const string AXIS_B = "B";//代表Y轴
-        public const string AXIS_C = "C";//代表Z轴
-        public const string GET_POS = "_TP";//得到当前位置
-        public const string GET_POS_ERROR = "_TE";//得到当前位置误差
-        public const string ABS_MOVE = "PA";//绝对移动
-        public const string RELATIVE_MOVE = "PR";//相对移动  
-
-        public const string WATCH_OPERATOR = "MG ";//查看操作数
-        public const string START_MOTION = "_BG";//开始运动
+        public string DEFAULT_IP_ADDRESS = "10.0.0.100";//默认IP      
+        public string AXIS_ENABLE = "SH";//轴使能，使外界力不能移动轴+（A,B）
+        public string AXIS_RELEASE = "MO";//释放 电机关断
+        public string STOP = "ST";//停止所有动作
+        public string EXCUATE = "BG";//执行动作
+        public string GO_HOME = "FIB";//回零
+        public string AXIS_A = "A";//代表X轴
+        public string AXIS_B = "B";//代表Y轴
+        public string AXIS_C = "C";//代表Z轴
+        public string GET_POS = "_TP";//得到当前位置
+        public string GET_POS_ERROR = "_TE";//得到当前位置误差
+        public string ABS_MOVE = "PA";//绝对移动
+        public string RELATIVE_MOVE = "PR";//相对移动  
+        public string WATCH_OPERATOR = "MG ";//查看操作数
+        public string START_MOTION = "_BG";//开始运动
         #endregion
         private static Mutex mutex = new Mutex();
         /// <summary>
@@ -74,7 +63,8 @@ namespace TimeLapse.Operation
             }
             catch (Exception ex)
             {
-                throw ex;
+                LogHelper.GetLogger<HDSMobilityController>().Error(string.Format("init error, error message is: {0}", ex.Message));
+                return false;
             }
 
             //gclib.GCommand("SHABC");
