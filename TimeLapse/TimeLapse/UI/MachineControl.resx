@@ -117,44 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Camera_Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrReport" xml:space="preserve">
-    <value>Report</value>
-  </data>
-  <data name="Camera_Snapshot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Snapshot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_Pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_Setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_Focus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Focus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Machine_Setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Machine_Setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="Camera_Start" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrCreateReport" xml:space="preserve">
-    <value>Click Report to create a Technical Support Request.</value>
-  </data>
-  <data name="StrOutOfMemory" xml:space="preserve">
-    <value>Program may run out of memory, please restart the program.</value>
-  </data>
-  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrUnknownErrorMsg" xml:space="preserve">
-    <value>Encountered an unknown error. Please restart the program.</value>
-  </data>
 </root>
