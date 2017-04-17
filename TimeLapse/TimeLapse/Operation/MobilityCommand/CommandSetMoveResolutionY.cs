@@ -13,6 +13,11 @@ namespace TimeLapse.Operation.MobilityCommand
     public class CommandSetMoveResolutionY : Command
     {
         private int resolution;
+        public int Resolution
+        {
+            get { return this.resolution; }
+            set { this.resolution = value; }
+        }
         public CommandSetMoveResolutionY(int resolution, string name = "Set Move Resolution Y")
         {
             this.resolution = resolution > 0 ? resolution : 1;

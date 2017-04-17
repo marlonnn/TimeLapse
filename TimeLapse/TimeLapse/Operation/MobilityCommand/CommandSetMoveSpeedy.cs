@@ -13,6 +13,11 @@ namespace TimeLapse.Operation.MobilityCommand
     public class CommandSetMoveSpeedY : Command
     {
         private int speed;
+        public int Speed
+        {
+            get { return this.speed; }
+            set { this.speed = value; }
+        }
 
         public CommandSetMoveSpeedY (int speed, string name = "Set Move Speed Y")
         {

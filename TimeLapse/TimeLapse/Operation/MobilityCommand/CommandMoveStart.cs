@@ -10,6 +10,13 @@ namespace TimeLapse.Operation.MobilityCommand
     public class CommandMoveStart : Command
     {
         private string ipAddress;
+
+        public string IpAddress
+        {
+            get { return this.ipAddress; }
+            set { this.ipAddress = value; }
+        }
+
         public CommandMoveStart(string ipAddress, string name = "Move Start")
         {
             this.CommandName = name;

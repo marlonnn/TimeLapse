@@ -3,7 +3,7 @@
 <objects xmlns="http://www.springframework.net">
 
   <object id="commandsJob" type="Spring.Scheduling.Quartz.MethodInvokingJobDetailFactoryObject, Spring.Scheduling.Quartz20">
-    <property name="TargetObject" ref="commandFactory" />
+    <property name="TargetObject" ref="operationFactory" />
     <property name="TargetMethod" value="ExecuteInternal" />
     <property name="concurrent" value="false" />
   </object>

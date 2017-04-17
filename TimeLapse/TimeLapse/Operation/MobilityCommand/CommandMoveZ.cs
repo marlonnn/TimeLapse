@@ -10,6 +10,11 @@ namespace TimeLapse.Operation.MobilityCommand
     public class CommandMoveZ : Command
     {
         private int moveLength;
+        public int MoveLength
+        {
+            get { return this.moveLength; }
+            set { this.moveLength = value; }
+        }
         public CommandMoveZ(int moveLength, string name = "Move Z")
         {
             this.CommandName = name;

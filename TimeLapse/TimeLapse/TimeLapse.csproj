@@ -118,7 +118,7 @@
     </Compile>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Operation\Camera.cs" />
-    <Compile Include="Operation\CommandFactory.cs" />
+    <Compile Include="Operation\OperationFactory.cs" />
     <Compile Include="Operation\CommandQueue.cs" />
     <Compile Include="Operation\gclib.cs" />
     <Compile Include="Operation\HDSMobilityController.cs" />

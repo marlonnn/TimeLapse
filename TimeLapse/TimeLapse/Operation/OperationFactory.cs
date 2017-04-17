@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace TimeLapse.Operation
 {
-    public class CommandFactory
+    public class OperationFactory
     {
         public CommandQueue CommandQueue { get; set; }
+
+        public Dictionary<string, Command> CommandFactory { get; set; }
 
         public void ExecuteInternal()
         {
@@ -18,7 +20,7 @@ namespace TimeLapse.Operation
                 Command command = CommandQueue.Pop();
                 if (command != null && !command.Execute())
                 {
-                    LogHelper.GetLogger<CommandFactory>().Error(string.Format("{0} command error", command.CommandName));
+                    LogHelper.GetLogger<OperationFactory>().Error(string.Format("{0} command error", command.CommandName));
                 }
             }
         }

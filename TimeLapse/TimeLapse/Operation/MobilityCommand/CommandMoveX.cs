@@ -10,11 +10,18 @@ namespace TimeLapse.Operation.MobilityCommand
     public class CommandMoveX : Command
     {
         private int moveLength;
+
+        public int MoveLength
+        {
+            get { return this.moveLength; }
+            set { this.moveLength = value; }
+        }
         public CommandMoveX(int moveLength, string name = "Move X")
         {
             this.CommandName = name;
             this.moveLength = moveLength;
         }
+
         public override bool Execute()
         {
             try
