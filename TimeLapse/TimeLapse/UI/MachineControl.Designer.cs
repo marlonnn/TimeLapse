@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.panel1 = new DevComponents.DotNetBar.PanelEx();
             this.btnZRight = new DevComponents.DotNetBar.ButtonX();
             this.btnZLeft = new DevComponents.DotNetBar.ButtonX();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,11 +38,11 @@
             this.btnXRight = new DevComponents.DotNetBar.ButtonX();
             this.btnXLeft = new DevComponents.DotNetBar.ButtonX();
             this.label5 = new System.Windows.Forms.Label();
-            this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.expandablePanel1 = new DevComponents.DotNetBar.PanelEx();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.expandablePanel2 = new DevComponents.DotNetBar.PanelEx();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -64,7 +64,6 @@
             this.panel1.Controls.Add(this.btnXLeft);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.ExpandOnTitleClick = true;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(280, 155);
@@ -72,11 +71,6 @@
             this.panel1.Style.BorderColor.Color = System.Drawing.Color.CadetBlue;
             this.panel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.panel1.TabIndex = 33;
-            this.panel1.TitleHeight = 27;
-            this.panel1.TitleStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.panel1.TitleStyle.ForeColor.Color = System.Drawing.Color.Black;
-            this.panel1.TitleStyle.MarginLeft = 5;
-            this.panel1.TitleText = "Relative Motion";
             // 
             // btnZRight
             // 
@@ -181,7 +175,6 @@
             this.expandablePanel1.Controls.Add(this.label4);
             this.expandablePanel1.Controls.Add(this.label6);
             this.expandablePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandablePanel1.ExpandOnTitleClick = true;
             this.expandablePanel1.Location = new System.Drawing.Point(0, 155);
             this.expandablePanel1.Name = "expandablePanel1";
             this.expandablePanel1.Size = new System.Drawing.Size(280, 155);
@@ -189,11 +182,6 @@
             this.expandablePanel1.Style.BorderColor.Color = System.Drawing.Color.CadetBlue;
             this.expandablePanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.expandablePanel1.TabIndex = 34;
-            this.expandablePanel1.TitleHeight = 27;
-            this.expandablePanel1.TitleStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.expandablePanel1.TitleStyle.ForeColor.Color = System.Drawing.Color.Black;
-            this.expandablePanel1.TitleStyle.MarginLeft = 5;
-            this.expandablePanel1.TitleText = "Absulote Motion";
             // 
             // label3
             // 
@@ -232,7 +220,6 @@
             this.expandablePanel2.Controls.Add(this.label8);
             this.expandablePanel2.Controls.Add(this.label9);
             this.expandablePanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandablePanel2.ExpandOnTitleClick = true;
             this.expandablePanel2.Location = new System.Drawing.Point(0, 310);
             this.expandablePanel2.Name = "expandablePanel2";
             this.expandablePanel2.Size = new System.Drawing.Size(280, 155);
@@ -240,11 +227,6 @@
             this.expandablePanel2.Style.BorderColor.Color = System.Drawing.Color.CadetBlue;
             this.expandablePanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.expandablePanel2.TabIndex = 35;
-            this.expandablePanel2.TitleHeight = 27;
-            this.expandablePanel2.TitleStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.expandablePanel2.TitleStyle.ForeColor.Color = System.Drawing.Color.Black;
-            this.expandablePanel2.TitleStyle.MarginLeft = 5;
-            this.expandablePanel2.TitleText = "Real Time Coordinates";
             // 
             // label7
             // 
@@ -285,7 +267,7 @@
             this.Controls.Add(this.expandablePanel1);
             this.Controls.Add(this.panel1);
             this.Name = "MachineControl";
-            this.Size = new System.Drawing.Size(280, 495);
+            this.Size = new System.Drawing.Size(280, 465);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.expandablePanel1.ResumeLayout(false);
@@ -298,8 +280,8 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.ExpandablePanel panel1;
-        private DevComponents.DotNetBar.ExpandablePanel expandablePanel1;
+        private DevComponents.DotNetBar.PanelEx panel1;
+        private DevComponents.DotNetBar.PanelEx expandablePanel1;
         private System.Windows.Forms.Label label5;
         private DevComponents.DotNetBar.ButtonX btnZRight;
         private DevComponents.DotNetBar.ButtonX btnZLeft;
@@ -312,7 +294,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private DevComponents.DotNetBar.ExpandablePanel expandablePanel2;
+        private DevComponents.DotNetBar.PanelEx expandablePanel2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
