@@ -92,5 +92,12 @@ namespace TimeLapse.UI
         {
 
         }
+
+        private void buttonItemMachine_Click(object sender, EventArgs e)
+        {
+            MachineSettingForm machineSettingForm = new MachineSettingForm();
+            machineSettingForm.ShowDialog();
+            machineSettingForm.Dispose();
+        }
     }
 }

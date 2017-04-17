@@ -107,6 +107,9 @@
     <Compile Include="Operation\MobilityCommand\CommandCameraPause.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraStart.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraClose.cs" />
+    <Compile Include="UI\ChildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\ControlForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +162,12 @@
     <Compile Include="UI\MachineControl.Designer.cs">
       <DependentUpon>MachineControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MachineSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MachineSettingForm.Designer.cs">
+      <DependentUpon>MachineSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ProblemReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +204,9 @@
     <EmbeddedResource Include="Res\MiniDumpForm.zh-CN.resx" />
     <EmbeddedResource Include="UI\MachineControl.resx">
       <DependentUpon>MachineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MachineSettingForm.resx">
+      <DependentUpon>MachineSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
