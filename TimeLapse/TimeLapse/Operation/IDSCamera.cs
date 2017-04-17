@@ -10,17 +10,7 @@ namespace TimeLapse.Operation
 {
     public class IDSCamera : Camera
     {
-        private static Camera s_instance;
         private IDSCamera() { }
-
-        public static Camera getInstance()
-        {
-            if (s_instance == null)
-            {
-                s_instance = new IDSCamera();
-            }
-            return s_instance;
-        }
 
         private uEye.Camera camera;
         private uEye.Defines.Status statusRet = 0;

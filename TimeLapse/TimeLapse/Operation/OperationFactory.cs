@@ -18,9 +18,16 @@ namespace TimeLapse.Operation
             if (CommandQueue != null)
             {
                 Command command = CommandQueue.Pop();
-                if (command != null && !command.Execute())
+                if (command != null)
                 {
-                    LogHelper.GetLogger<OperationFactory>().Error(string.Format("{0} command error", command.CommandName));
+                    if (command.Execute())
+                    {
+                        LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command success", command.CommandName));
+                    }
+                    else
+                    {
+                        LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command fail", command.CommandName));
+                    }
                 }
             }
         }

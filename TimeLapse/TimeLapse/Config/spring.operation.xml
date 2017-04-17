@@ -5,10 +5,15 @@
   <!--命令工厂-->
   <object id="operationFactory" type="TimeLapse.Operation.OperationFactory, TimeLapse">
     <property name="CommandQueue" ref="CommandQueue" />
-    <property name="CommandFactory" ref="CommandFactory"/>
+    <property name="CommandFactory" ref="CommandFactory" />
     <!--Dictionary-->
-    <property name="CommandFactory">
+    <!--<property name="CommandFactory">
       <dictionary>
+        --><!--相机相关操作指令--><!--
+        <entry key="Start Camera" value-ref= "StartCamera"/>
+        <entry key="Pause Camera" value-ref= "PauseCamera"/>
+        <entry key="Close Camera" value-ref= "CloseCamera"/>
+        --><!--控制平台相关指令--><!--
         <entry key="Move Absolute" value-ref= "MoveAbsolute"/>
         <entry key="Move Exit" value-ref= "MoveExit"/>
         <entry key="Move Home" value-ref= "MoveHome"/>
@@ -27,72 +32,120 @@
         <entry key="Stop Move Y" value-ref= "StopMoveY"/>
         <entry key="Stop Move Z" value-ref= "StopMoveZ"/>
       </dictionary>
-    </property>
+    </property>-->
+  </object>
+
+  <object name="CommandFactory" type="System.Collections.Generic.Dictionary&lt;System.String, TimeLapse.Operation.Command>">
+    <constructor-arg>
+      <dictionary>
+        <!--相机相关操作指令-->
+        <entry key="Start Camera" value-ref= "StartCamera"/>
+        <entry key="Pause Camera" value-ref= "PauseCamera"/>
+        <entry key="Close Camera" value-ref= "CloseCamera"/>
+        <!--控制平台相关指令-->
+        <entry key="Move Absolute" value-ref= "MoveAbsolute"/>
+        <entry key="Move Exit" value-ref= "MoveExit"/>
+        <entry key="Move Home" value-ref= "MoveHome"/>
+        <entry key="Move Start" value-ref= "MoveStart"/>
+        <entry key="Move X" value-ref= "MoveX"/>
+        <entry key="Move Y" value-ref= "MoveY"/>
+        <entry key="Move Z" value-ref= "MoveZ"/>
+        <entry key="Set Move Resolution X" value-ref= "SetMoveResolutionX"/>
+        <entry key="Set Move Resolution Y" value-ref= "SetMoveResolutionY"/>
+        <entry key="Set Move Resolution Z" value-ref= "SetMoveResolutionZ"/>
+        <entry key="Start Move X With Speed" value-ref= "StartMoveXWithSpeed"/>
+        <entry key="Start Move Y With Speed" value-ref= "StartMoveYWithSpeed"/>
+        <entry key="Start Move Z With Speed" value-ref= "StartMoveZWithSpeed"/>
+        <entry key="Stop Move" value-ref= "StopMove"/>
+        <entry key="Stop Move X" value-ref= "StopMoveX"/>
+        <entry key="Stop Move Y" value-ref= "StopMoveY"/>
+        <entry key="Stop Move Z" value-ref= "StopMoveZ"/>
+      </dictionary>
+    </constructor-arg>
+  </object>
+  
+  <!--抽象命令-->
+  <object name="abstractCommand" abstract="true" type="TimeLapse.Operation.MobilityCommand.Command, TimeLapse" >
+    <property name="CommandName" value="Abstract Command"/>
+    <property name="MobilityController" ref="mobilityController"/>
+    <property name="Camera" ref="Camera"/>
   </object>
   
   <!--具体命令-->
-  <object id="MoveAbsolute" type="TimeLapse.Operation.MobilityCommand.CommandMoveAbsolute, TimeLapse">
+  <object id="StartCamera" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraStart, TimeLapse">
+    <constructor-arg value="Start Camera"/>
+  </object>
+
+  <object id="PauseCamera" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraPause, TimeLapse">
+    <constructor-arg value="Pause Camera"/>
+  </object>
+
+  <object id="CloseCamera" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraClose, TimeLapse">
+    <constructor-arg value="Close Camera"/>
+  </object>
+  
+  <object id="MoveAbsolute" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveAbsolute, TimeLapse">
     <constructor-arg value="0"/>
     <constructor-arg value="0"/>
     <constructor-arg value="0"/>
     <constructor-arg value="Move Absolute"/>
   </object>
-  <object id="MoveExit" type="TimeLapse.Operation.MobilityCommand.CommandMoveExit, TimeLapse">
+  <object id="MoveExit" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveExit, TimeLapse">
     <constructor-arg value="Move Exit"/>
   </object>
-  <object id="MoveHome" type="TimeLapse.Operation.MobilityCommand.CommandMoveHome, TimeLapse">
+  <object id="MoveHome" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveHome, TimeLapse">
     <constructor-arg value="Move Home"/>
   </object>
-  <object id="MoveStart" type="TimeLapse.Operation.MobilityCommand.CommandMoveStart, TimeLapse">
+  <object id="MoveStart" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveStart, TimeLapse">
     <constructor-arg value="10.0.0.100"/>
     <constructor-arg value="Move Start"/>
   </object>
-  <object id="MoveX" type="TimeLapse.Operation.MobilityCommand.CommandMoveX, TimeLapse" >
+  <object id="MoveX" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveX, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Move X"/>
   </object>
-  <object id="MoveY" type="TimeLapse.Operation.MobilityCommand.CommandMoveY, TimeLapse" >
+  <object id="MoveY" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveY, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Move Y"/>
   </object>
-  <object id="MoveZ" type="TimeLapse.Operation.MobilityCommand.CommandMoveZ, TimeLapse" >
+  <object id="MoveZ" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveZ, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Move Z"/>
   </object>
-  <object id="SetMoveResolutionX" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionX, TimeLapse" >
+  <object id="SetMoveResolutionX" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionX, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Set Move Resolution X"/>
   </object>
-  <object id="SetMoveResolutionY" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionY, TimeLapse" >
+  <object id="SetMoveResolutionY" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionY, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Set Move Resolution Y"/>
   </object>
-  <object id="SetMoveResolutionZ" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionZ, TimeLapse" >
+  <object id="SetMoveResolutionZ" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionZ, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Set Move Resolution Z"/>
   </object>
-  <object id="StartMoveXWithSpeed" type="TimeLapse.Operation.MobilityCommand.CommandStartMoveXWithSpeed, TimeLapse">
+  <object id="StartMoveXWithSpeed" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStartMoveXWithSpeed, TimeLapse">
     <constructor-arg value="0"/>
     <constructor-arg value="Start Move X With Speed"/>
   </object>
-  <object id="StartMoveYWithSpeed" type="TimeLapse.Operation.MobilityCommand.CommandStartMoveYWithSpeed, TimeLapse">
+  <object id="StartMoveYWithSpeed" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStartMoveYWithSpeed, TimeLapse">
     <constructor-arg value="0"/>
     <constructor-arg value="Start Move Y With Speed"/>
   </object>
-  <object id="StartMoveZWithSpeed" type="TimeLapse.Operation.MobilityCommand.CommandStartMoveZWithSpeed, TimeLapse">
+  <object id="StartMoveZWithSpeed" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStartMoveZWithSpeed, TimeLapse">
     <constructor-arg value="0"/>
     <constructor-arg value="Start Move Z With Speed"/>
   </object>
-  <object id="StopMove" type="TimeLapse.Operation.MobilityCommand.CommandStopMove, TimeLapse" >
+  <object id="StopMove" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStopMove, TimeLapse" >
     <constructor-arg value="Stop Move"/>
   </object>
-  <object id="StopMoveX" type="TimeLapse.Operation.MobilityCommand.CommandStopMoveX, TimeLapse">
+  <object id="StopMoveX" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStopMoveX, TimeLapse">
     <constructor-arg value="Stop Move X"/>
   </object>
-  <object id="StopMoveY" type="TimeLapse.Operation.MobilityCommand.CommandStopMoveY, TimeLapse">
+  <object id="StopMoveY" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStopMoveY, TimeLapse">
     <constructor-arg value="Stop Move Y"/>
   </object>
-  <object id="StopMoveZ" type="TimeLapse.Operation.MobilityCommand.CommandStopMoveZ, TimeLapse">
+  <object id="StopMoveZ" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStopMoveZ, TimeLapse">
     <constructor-arg value="Stop Move Z"/>
   </object>
   
@@ -101,6 +154,9 @@
   <object id="CommandQueue" type="TimeLapse.Operation.CommandQueue, TimeLapse">
   </object>
 
+  <object id="Camera" type="TimeLapse.Operation.IDSCamera, TimeLapse">
+  </object>
+  
   <object id="gclib" type="TimeLapse.Operation.Gclib, TimeLapse">
   </object>
 

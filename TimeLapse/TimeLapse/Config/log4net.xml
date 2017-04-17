@@ -6,14 +6,14 @@
 
   <!--主日志-->
   <root>
-    <level value="INFO" />
+    <level value="DEBUG" />
     <appender-ref ref="RollingLogFileAppender" />
   </root>
   
   <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
-    <file value="./log/novoCyteSimulator.log" />
+    <file value="./log/novoCyte.log" />
     <appendToFile value="true" />
-    <!--<threshold value="WARN"/>-->
+    <threshold value="DEBUG"/>
     <lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
     <rollingStyle value="Composite" />
     <datePattern value="yyyyMMdd" />

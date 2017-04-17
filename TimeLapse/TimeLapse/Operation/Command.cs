@@ -17,6 +17,9 @@ namespace TimeLapse.Operation
         public string CommandName { get; set; }
 
         protected MobilityController MobilityController { get; set; }
+
+        protected Camera Camera { get; set; }
+
         public abstract bool Execute();
     }
 }

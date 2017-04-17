@@ -8,5 +8,7 @@
 
   <!--For Debug-->
   <object name="controlForm" type="TimeLapse.UI.ControlForm, TimeLapse">
+    <property name="CommandQueue" ref="CommandQueue"/>
+    <property name="CommandFactory" ref="CommandFactory"/>
   </object>
 </objects>

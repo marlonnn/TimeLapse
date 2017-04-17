@@ -27,7 +27,7 @@ namespace TimeLapse
 
                 SplashScreenForm.CloseSplash();
 
-                MainForm mainForm = SpringHelper.GetObject<MainForm>("mainForm");
+                //MainForm mainForm = SpringHelper.GetObject<MainForm>("mainForm");
                 ControlForm controlForm = SpringHelper.GetObject<ControlForm>("controlForm");
                 Application.Run(controlForm);
             }
