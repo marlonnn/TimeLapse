@@ -21,6 +21,13 @@ namespace TimeLapse.Operation
         /// </summary>
         /// <param name="r"></param>
         /// <returns></returns>
+        public abstract bool SetResolution(int r);
+
+        /// <summary>
+        /// 设置移动单位，移动单位为控制器最小移动距离*r
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
         public abstract bool SetResolutionX(int r);
 
         /// <summary>

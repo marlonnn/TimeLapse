@@ -11,4 +11,16 @@
     <property name="CommandQueue" ref="CommandQueue"/>
     <property name="CommandFactory" ref="CommandFactory"/>
   </object>
+
+  <!--Machine Setting Form-->
+  <object name="machineSettingForm" type="TimeLapse.UI.MachineSettingForm, TimeLapse"
+          singleton="false">
+    <property name="CommandQueue" ref="CommandQueue"/>
+    <property name="CommandFactory" ref="CommandFactory"/>
+    <property name="IpAddress" value="10.0.0.100"/>
+    <property name="MotionStep" value="1"/>
+    <property name="StepUnit" value="50nm"/>
+    <property name="MotionSpeed" value="1"/>
+    <property name="IsFixedLength" value="true"/>
+  </object>
 </objects>

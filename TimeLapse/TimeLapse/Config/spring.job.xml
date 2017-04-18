@@ -14,10 +14,23 @@
     <property name="RepeatInterval" value="500ms" />
   </object>
 
+  <object id="mobilityJob" type="Spring.Scheduling.Quartz.MethodInvokingJobDetailFactoryObject, Spring.Scheduling.Quartz20">
+    <property name="TargetObject" ref="operationFactory" />
+    <property name="TargetMethod" value="ExecuteMobilityInternal" />
+    <property name="concurrent" value="false" />
+  </object>
+
+  <object id="mobilityTrigger" type="Spring.Scheduling.Quartz.SimpleTriggerObject, Spring.Scheduling.Quartz20">
+    <property name="JobDetail" ref="mobilityJob" />
+    <property name="StartDelay" value="1s" />
+    <property name="RepeatInterval" value="1000ms" />
+  </object>
+  
   <object id="scheduler"  type="Spring.Scheduling.Quartz.SchedulerFactoryObject, Spring.Scheduling.Quartz20">
     <property name="triggers">
       <list>
         <ref object="commandsTrigger" />
+        <ref object="mobilityTrigger" />
       </list>
     </property>
   </object>

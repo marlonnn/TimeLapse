@@ -17,6 +17,8 @@ namespace TimeLapse.Operation.MobilityCommand
             set { this.ipAddress = value; }
         }
 
+        public UI.ControlForm.UpdateMotionCtrls UpdateMotionCtrlsHandler { get; set; }
+
         public CommandMoveStart(string ipAddress, string name = "Move Start")
         {
             this.CommandName = name;
@@ -27,7 +29,12 @@ namespace TimeLapse.Operation.MobilityCommand
         {
             try
             {
-                return MobilityController.Init(ipAddress);
+                bool success = MobilityController.Init(ipAddress);
+                if (UpdateMotionCtrlsHandler != null && success)
+                {
+                    UpdateMotionCtrlsHandler(success);
+                }
+                return success;
             }
             catch (Exception e)
             {

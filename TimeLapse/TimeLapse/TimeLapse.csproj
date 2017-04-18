@@ -105,8 +105,10 @@
     <Compile Include="DBADO\TransferADO.cs" />
     <Compile Include="DBADO\TreamentADO.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraPause.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandCameraPosition.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraStart.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraClose.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandSetMoveResolution.cs" />
     <Compile Include="UI\ChildForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,7 +127,7 @@
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Operation\Camera.cs" />
     <Compile Include="Operation\OperationFactory.cs" />
-    <Compile Include="Operation\CommandQueue.cs" />
+    <Compile Include="CommandQueue.cs" />
     <Compile Include="Operation\gclib.cs" />
     <Compile Include="Operation\HDSMobilityController.cs" />
     <Compile Include="Operation\IDSCamera.cs" />
@@ -280,6 +282,7 @@
     <None Include="Resources\Camera_Start.png" />
     <None Include="Resources\Camera_Stop.png" />
     <None Include="Resources\Camera_Snapshot.png" />
+    <Content Include="Resources\Help.png" />
     <Content Include="Resources\Key.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -289,6 +292,7 @@
     </Content>
     <Content Include="Resources\Machine_Setting.png" />
     <Content Include="Resources\SplashScreen.png" />
+    <None Include="Resources\Warning.png" />
     <Content Include="System.Data.SQLite.dll" />
   </ItemGroup>
   <ItemGroup />

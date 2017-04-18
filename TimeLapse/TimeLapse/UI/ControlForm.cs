@@ -16,13 +16,61 @@ namespace TimeLapse.UI
 {
     public partial class ControlForm : Office2007RibbonForm
     {
+        private MachineSettingForm machineSettingForm;
+
         private CommandQueue CommandQueue;
 
         public Dictionary<string, Operation.Command> CommandFactory { get; set; }
+
+        public delegate void UpdateMotionPosition(float x, float xError, float y, float yError, float z, float zError);
+        public delegate void UpdateMotionCtrls(bool isInitialized);
+
         public ControlForm()
         {
             InitializeComponent();
             this.KeyDown += ControlForm_KeyDown;
+            this.Load += ControlForm_Load;
+        }
+
+        private void ControlForm_Load(object sender, EventArgs e)
+        {
+            CommandCameraPosition commandCameraPosition = (CommandCameraPosition)CommandFactory["Camera Position"];
+            commandCameraPosition.UpdateMotionPositionHandler += UpdateMotionPositionHandler;
+
+            CommandMoveStart commandMoveStart = (CommandMoveStart)CommandFactory["Move Start"];
+            commandMoveStart.UpdateMotionCtrlsHandler += UpdateMotionCtrlsHandler;
+
+            CommandMoveExit commandMoveExit = (CommandMoveExit)CommandFactory["Move Exit"];
+            commandMoveExit.UpdateMotionCtrlsHandler += UpdateMotionCtrlsHandler;
+        }
+
+        public void UpdateMotionCtrlsHandler(bool isOpen)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => UpdateMotionCtrlsHandler(isOpen)));
+            }
+            else
+            {
+                if (machineSettingForm != null)
+                {
+                    this.machineSettingForm.UpdateMobilityStatus(isOpen);
+                }
+                this.machineControl.UpdateMotionCtrls(isOpen);
+            }
+        }
+
+        public void UpdateMotionPositionHandler(float x, float xError, float y, float yError, float z, float zError)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => UpdateMotionPositionHandler(x, xError, y, yError, z, zError)));
+            }
+            else
+            {
+                this.machineControl.UpdateMotionPosition(x, xError, y, yError, z, zError);
+            }
+
         }
 
         private void ControlForm_KeyDown(object sender, KeyEventArgs e)
@@ -66,6 +114,7 @@ namespace TimeLapse.UI
         {
             CommandCameraStart command = (CommandCameraStart)CommandFactory["Start Camera"];
             command.CommandName = "Start Camera";
+            command.IntPtr = this.pictureBox.Handle;
             CommandQueue.Push(command);
         }
 
@@ -95,9 +144,43 @@ namespace TimeLapse.UI
 
         private void buttonItemMachine_Click(object sender, EventArgs e)
         {
-            MachineSettingForm machineSettingForm = new MachineSettingForm();
-            machineSettingForm.ShowDialog();
+            machineSettingForm = SpringHelper.GetObject<MachineSettingForm>("machineSettingForm");
+            if (machineSettingForm.ShowDialog() == DialogResult.OK )
+            {
+                this.machineControl.MotionStep = machineSettingForm.MotionStep;
+                this.machineControl.MotionSpeed = machineSettingForm.MotionSpeed;
+                this.machineControl.StepUnit = machineSettingForm.StepUnit;
+                this.machineControl.IsFixedLength = machineControl.IsFixedLength;
+
+                CommandSetMoveResolution command = (CommandSetMoveResolution)CommandFactory["Set Move Resolution"];
+                command.CommandName = "Set Move Resolution";
+                command.Resolution = CalculateResolution(this.machineControl.StepUnit);
+                CommandQueue.Push(command);
+            }
             machineSettingForm.Dispose();
+        }
+
+        private int CalculateResolution(string stepUnit)
+        {
+            int resolution = 20000;
+            switch (stepUnit)
+            {
+                case "mm":
+                    resolution = 20000;
+                    break;
+                case "um":
+                    resolution = 20;
+                    break;
+                case "50nm":
+                    resolution = 1;
+                    break;
+            }
+            return resolution;
+        }
+
+        private void buttonItemAbout_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

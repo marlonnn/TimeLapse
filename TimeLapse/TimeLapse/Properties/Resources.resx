@@ -145,6 +145,9 @@
   <data name="Camera_Start" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Camera_Start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="StrCreateReport" xml:space="preserve">
     <value>Click Report to create a Technical Support Request.</value>
   </data>
@@ -156,5 +159,8 @@
   </data>
   <data name="StrUnknownErrorMsg" xml:space="preserve">
     <value>Encountered an unknown error. Please restart the program.</value>
+  </data>
+  <data name="Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

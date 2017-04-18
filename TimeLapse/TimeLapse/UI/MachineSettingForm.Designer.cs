@@ -41,6 +41,15 @@
             this.btnStart = new DevComponents.DotNetBar.ButtonX();
             this.btnReset = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.labelStatus = new DevComponents.DotNetBar.LabelX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.cbxMotionMode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.inputStep)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipAddressInput)).BeginInit();
@@ -52,7 +61,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(22, 107);
+            this.labelX1.Location = new System.Drawing.Point(22, 89);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(75, 23);
             this.labelX1.TabIndex = 0;
@@ -64,7 +73,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(22, 175);
+            this.labelX2.Location = new System.Drawing.Point(22, 128);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 1;
@@ -91,7 +100,7 @@
             this.inputStep.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.inputStep.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.inputStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.inputStep.Location = new System.Drawing.Point(103, 107);
+            this.inputStep.Location = new System.Drawing.Point(103, 89);
             this.inputStep.MinValue = 1;
             this.inputStep.Name = "inputStep";
             this.inputStep.ShowUpDown = true;
@@ -111,7 +120,7 @@
             this.comboItem1,
             this.comboItem4,
             this.comboItem6});
-            this.cbxStepUnit.Location = new System.Drawing.Point(245, 107);
+            this.cbxStepUnit.Location = new System.Drawing.Point(261, 89);
             this.cbxStepUnit.Name = "cbxStepUnit";
             this.cbxStepUnit.Size = new System.Drawing.Size(79, 23);
             this.cbxStepUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -138,7 +147,7 @@
             this.inputSpeed.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.inputSpeed.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.inputSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.inputSpeed.Location = new System.Drawing.Point(103, 175);
+            this.inputSpeed.Location = new System.Drawing.Point(103, 128);
             this.inputSpeed.MinValue = 1;
             this.inputSpeed.Name = "inputSpeed";
             this.inputSpeed.ShowUpDown = true;
@@ -168,40 +177,149 @@
             // 
             this.btnStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnStart.Location = new System.Drawing.Point(22, 255);
+            this.btnStart.Location = new System.Drawing.Point(22, 228);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnStart.TabIndex = 23;
             this.btnStart.Text = "Start";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnReset
             // 
             this.btnReset.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReset.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReset.Location = new System.Drawing.Point(132, 255);
+            this.btnReset.Enabled = false;
+            this.btnReset.Location = new System.Drawing.Point(103, 228);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnReset.TabIndex = 24;
             this.btnReset.Text = "Reset";
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnClose
             // 
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClose.Location = new System.Drawing.Point(245, 255);
+            this.btnClose.Enabled = false;
+            this.btnClose.Location = new System.Drawing.Point(184, 228);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClose.TabIndex = 25;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "Stop";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // labelX4
+            // 
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(227, 43);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(41, 23);
+            this.labelX4.TabIndex = 26;
+            this.labelX4.Text = "Status:";
+            // 
+            // labelStatus
+            // 
+            // 
+            // 
+            // 
+            this.labelStatus.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelStatus.Location = new System.Drawing.Point(273, 43);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(75, 23);
+            this.labelStatus.TabIndex = 27;
+            this.labelStatus.Text = "OFF";
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Location = new System.Drawing.Point(265, 228);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.TabIndex = 29;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // labelX7
+            // 
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Location = new System.Drawing.Point(226, 89);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(29, 23);
+            this.labelX7.TabIndex = 31;
+            this.labelX7.Text = "Unit:";
+            // 
+            // labelX5
+            // 
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(226, 128);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(75, 23);
+            this.labelX5.TabIndex = 32;
+            this.labelX5.Text = "um/s";
+            // 
+            // labelX6
+            // 
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(22, 171);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(75, 23);
+            this.labelX6.TabIndex = 33;
+            this.labelX6.Text = "Motion Mode:";
+            // 
+            // cbxMotionMode
+            // 
+            this.cbxMotionMode.DisplayMember = "Text";
+            this.cbxMotionMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbxMotionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMotionMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbxMotionMode.FormattingEnabled = true;
+            this.cbxMotionMode.ItemHeight = 17;
+            this.cbxMotionMode.Items.AddRange(new object[] {
+            this.comboItem2,
+            this.comboItem3});
+            this.cbxMotionMode.Location = new System.Drawing.Point(103, 171);
+            this.cbxMotionMode.Name = "cbxMotionMode";
+            this.cbxMotionMode.Size = new System.Drawing.Size(101, 23);
+            this.cbxMotionMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbxMotionMode.TabIndex = 34;
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "Fixed Length";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "Fixed Speed";
             // 
             // MachineSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 303);
+            this.ClientSize = new System.Drawing.Size(360, 277);
+            this.Controls.Add(this.cbxMotionMode);
+            this.Controls.Add(this.labelX6);
+            this.Controls.Add(this.labelX5);
+            this.Controls.Add(this.labelX7);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.labelStatus);
+            this.Controls.Add(this.labelX4);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);
@@ -236,5 +354,14 @@
         private DevComponents.DotNetBar.ButtonX btnStart;
         private DevComponents.DotNetBar.ButtonX btnReset;
         private DevComponents.DotNetBar.ButtonX btnClose;
+        private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.LabelX labelStatus;
+        private DevComponents.DotNetBar.ButtonX btnSave;
+        private DevComponents.DotNetBar.LabelX labelX7;
+        private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbxMotionMode;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
     }
 }

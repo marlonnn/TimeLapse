@@ -8,6 +8,7 @@ namespace TimeLapse.Operation.MobilityCommand
 {
     public class CommandCameraStart : Command
     {
+        public IntPtr IntPtr { get; set; }
         public CommandCameraStart(string name = "Start Camera")
         {
             this.CommandName = name;
@@ -15,7 +16,14 @@ namespace TimeLapse.Operation.MobilityCommand
 
         public override bool Execute()
         {
-            return Camera.Init();
+            if (Camera.Init())
+            {
+                return Camera.DisplayLive(IntPtr);
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

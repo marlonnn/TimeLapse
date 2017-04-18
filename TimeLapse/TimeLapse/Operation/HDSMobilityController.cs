@@ -76,6 +76,17 @@ namespace TimeLapse.Operation
         /// </summary>
         /// <param name="r"></param>
         /// <returns></returns>
+        public override bool SetResolution(int r)
+        {
+            ResolutionX = r;
+            return true;
+        }
+
+        /// <summary>
+        /// 设置光栅分辨率
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
         public override bool SetResolutionX(int r)
         {
             ResolutionX = r;

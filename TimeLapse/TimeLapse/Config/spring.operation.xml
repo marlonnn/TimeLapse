@@ -6,33 +6,6 @@
   <object id="operationFactory" type="TimeLapse.Operation.OperationFactory, TimeLapse">
     <property name="CommandQueue" ref="CommandQueue" />
     <property name="CommandFactory" ref="CommandFactory" />
-    <!--Dictionary-->
-    <!--<property name="CommandFactory">
-      <dictionary>
-        --><!--相机相关操作指令--><!--
-        <entry key="Start Camera" value-ref= "StartCamera"/>
-        <entry key="Pause Camera" value-ref= "PauseCamera"/>
-        <entry key="Close Camera" value-ref= "CloseCamera"/>
-        --><!--控制平台相关指令--><!--
-        <entry key="Move Absolute" value-ref= "MoveAbsolute"/>
-        <entry key="Move Exit" value-ref= "MoveExit"/>
-        <entry key="Move Home" value-ref= "MoveHome"/>
-        <entry key="Move Start" value-ref= "MoveStart"/>
-        <entry key="Move X" value-ref= "MoveX"/>
-        <entry key="Move Y" value-ref= "MoveY"/>
-        <entry key="Move Z" value-ref= "MoveZ"/>
-        <entry key="Set Move Resolution X" value-ref= "SetMoveResolutionX"/>
-        <entry key="Set Move Resolution Y" value-ref= "SetMoveResolutionY"/>
-        <entry key="Set Move Resolution Z" value-ref= "SetMoveResolutionZ"/>
-        <entry key="Start Move X With Speed" value-ref= "StartMoveXWithSpeed"/>
-        <entry key="Start Move Y With Speed" value-ref= "StartMoveYWithSpeed"/>
-        <entry key="Start Move Z With Speed" value-ref= "StartMoveZWithSpeed"/>
-        <entry key="Stop Move" value-ref= "StopMove"/>
-        <entry key="Stop Move X" value-ref= "StopMoveX"/>
-        <entry key="Stop Move Y" value-ref= "StopMoveY"/>
-        <entry key="Stop Move Z" value-ref= "StopMoveZ"/>
-      </dictionary>
-    </property>-->
   </object>
 
   <object name="CommandFactory" type="System.Collections.Generic.Dictionary&lt;System.String, TimeLapse.Operation.Command>">
@@ -42,6 +15,7 @@
         <entry key="Start Camera" value-ref= "StartCamera"/>
         <entry key="Pause Camera" value-ref= "PauseCamera"/>
         <entry key="Close Camera" value-ref= "CloseCamera"/>
+        <entry key="Camera Position" value-ref= "CameraPosition"/>
         <!--控制平台相关指令-->
         <entry key="Move Absolute" value-ref= "MoveAbsolute"/>
         <entry key="Move Exit" value-ref= "MoveExit"/>
@@ -50,6 +24,7 @@
         <entry key="Move X" value-ref= "MoveX"/>
         <entry key="Move Y" value-ref= "MoveY"/>
         <entry key="Move Z" value-ref= "MoveZ"/>
+        <entry key="Set Move Resolution" value-ref= "SetMoveResolution"/>
         <entry key="Set Move Resolution X" value-ref= "SetMoveResolutionX"/>
         <entry key="Set Move Resolution Y" value-ref= "SetMoveResolutionY"/>
         <entry key="Set Move Resolution Z" value-ref= "SetMoveResolutionZ"/>
@@ -83,6 +58,10 @@
   <object id="CloseCamera" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraClose, TimeLapse">
     <constructor-arg value="Close Camera"/>
   </object>
+
+  <object id="CameraPosition" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraPosition, TimeLapse">
+    <constructor-arg value="Camera Position"/>
+  </object>
   
   <object id="MoveAbsolute" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveAbsolute, TimeLapse">
     <constructor-arg value="0"/>
@@ -111,6 +90,10 @@
   <object id="MoveZ" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveZ, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Move Z"/>
+  </object>
+  <object id="SetMoveResolution" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolution, TimeLapse" >
+    <constructor-arg value="0"/>
+    <constructor-arg value="Set Move Resolution"/>
   </object>
   <object id="SetMoveResolutionX" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionX, TimeLapse" >
     <constructor-arg value="0"/>

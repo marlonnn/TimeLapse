@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeLapse.Operation.MobilityCommand;
 
 namespace TimeLapse.Operation
 {
@@ -13,6 +14,8 @@ namespace TimeLapse.Operation
 
         public Dictionary<string, Command> CommandFactory { get; set; }
 
+        public bool MobilityInitialized { get; set; }
+
         public void ExecuteInternal()
         {
             if (CommandQueue != null)
@@ -20,15 +23,40 @@ namespace TimeLapse.Operation
                 Command command = CommandQueue.Pop();
                 if (command != null)
                 {
-                    if (command.Execute())
+                    if (command.CommandName == "Move Start" || command.CommandName == "Move Exit")
                     {
-                        LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command success", command.CommandName));
+                        MobilityInitialized = command.Execute();
+                        LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command {1}",
+                            command.CommandName, MobilityInitialized ? "success" : "fail"));
                     }
                     else
                     {
-                        LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command fail", command.CommandName));
+                        if (command.Execute())
+                        {
+                            LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command success", command.CommandName));
+                        }
+                        else
+                        {
+                            LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command fail", command.CommandName));
+                        }
                     }
                 }
+            }
+        }
+
+        public void ExecuteMobilityInternal()
+        {
+            try
+            {
+                if (MobilityInitialized)
+                {
+                    CommandCameraPosition commandTest = (CommandCameraPosition)CommandFactory["Camera Position"];
+                    commandTest.Execute();
+                }
+            }
+            catch (Exception)
+            {
+                LogHelper.GetLogger<OperationFactory>().Debug(string.Format("Execute <{0}> command fail", "Camera Position"));
             }
         }
 
