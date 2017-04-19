@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -112,76 +112,15 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Camera_Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buttonRegister.Text" xml:space="preserve">
+    <value>注册</value>
   </data>
-  <data name="StrCopyRight" xml:space="preserve">
-    <value>Copyright © 2017 Cii-tech CO.,LTD</value>
-  </data>
-  <data name="StrWarning" xml:space="preserve">
-    <value>Warning: This computer program is protected by copyright law and international treaties. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law.</value>
-  </data>
-  <data name="About" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\About.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrReport" xml:space="preserve">
-    <value>Report</value>
-  </data>
-  <data name="Camera_Snapshot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Snapshot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_Pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Help" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_Setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_Focus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Focus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrCompanyName" xml:space="preserve">
-    <value>CHINA INNOVATIN INSTRUMENT CO.,LTD</value>
-  </data>
-  <data name="Machine_Setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Machine_Setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="Camera_Start" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camera_Start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrBuiltDate" xml:space="preserve">
-    <value>Built Date:</value>
-  </data>
-  <data name="StrAbout" xml:space="preserve">
-    <value>About{0}</value>
-  </data>
-  <data name="StrCreateReport" xml:space="preserve">
-    <value>Click Report to create a Technical Support Request.</value>
-  </data>
-  <data name="StrOutOfMemory" xml:space="preserve">
-    <value>Program may run out of memory, please restart the program.</value>
-  </data>
-  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrUnknownErrorMsg" xml:space="preserve">
-    <value>Encountered an unknown error. Please restart the program.</value>
-  </data>
-  <data name="About1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\About.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>确定</value>
   </data>
 </root>

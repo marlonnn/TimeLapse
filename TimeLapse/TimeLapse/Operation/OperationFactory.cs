@@ -8,19 +8,29 @@ using TimeLapse.Operation.MobilityCommand;
 
 namespace TimeLapse.Operation
 {
+    /// <summary>
+    /// 操作工厂 （相机和运动控制平台）
+    /// 1.开启计划任务，负责循环处理任务队列中的任务
+    /// 2.若运动平台已经初始化，则循环获取运动平台坐标位置
+    /// 3.高并发性 Spring.Scheduing.Quartz20 来调度执行
+    /// </summary>
+    /// <remarks>
+    /// 公司：CII-TECH
+    /// 作者：钟文               
+    /// 创建日期：2017-4-19   
+    /// </remarks>
     public class OperationFactory
     {
-        public CommandQueue CommandQueue { get; set; }
-
-        public Dictionary<string, Command> CommandFactory { get; set; }
+        //命令工厂
+        public CommandFactory CommandFactory { get; set; }
 
         public bool MobilityInitialized { get; set; }
 
         public void ExecuteInternal()
         {
-            if (CommandQueue != null)
+            if (CommandFactory.CommandQueue != null)
             {
-                Command command = CommandQueue.Pop();
+                Command command = CommandFactory.CommandQueue.Pop();
                 if (command != null)
                 {
                     if (command.CommandName == "Move Start" || command.CommandName == "Move Exit")
@@ -50,8 +60,8 @@ namespace TimeLapse.Operation
             {
                 if (MobilityInitialized)
                 {
-                    CommandCameraPosition commandTest = (CommandCameraPosition)CommandFactory["Camera Position"];
-                    commandTest.Execute();
+                    CommandCameraPosition commandCameraPosition = CommandFactory.CreateCommand<CommandCameraPosition>("Camera Position");
+                    commandCameraPosition.Execute();
                 }
             }
             catch (Exception)

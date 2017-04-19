@@ -4,11 +4,15 @@
 
   <!--命令工厂-->
   <object id="operationFactory" type="TimeLapse.Operation.OperationFactory, TimeLapse">
-    <property name="CommandQueue" ref="CommandQueue" />
     <property name="CommandFactory" ref="CommandFactory" />
   </object>
 
-  <object name="CommandFactory" type="System.Collections.Generic.Dictionary&lt;System.String, TimeLapse.Operation.Command>">
+  <object id="CommandFactory" type="TimeLapse.Operation.CommandFactory, TimeLapse">
+    <constructor-arg ref="CommandQueue"/>
+    <constructor-arg ref="CommandRepertory"/>
+  </object>
+
+  <object id="CommandRepertory" type="System.Collections.Generic.Dictionary&lt;System.String, TimeLapse.Operation.Command>">
     <constructor-arg>
       <dictionary>
         <!--相机相关操作指令-->
@@ -16,6 +20,7 @@
         <entry key="Pause Camera" value-ref= "PauseCamera"/>
         <entry key="Close Camera" value-ref= "CloseCamera"/>
         <entry key="Camera Position" value-ref= "CameraPosition"/>
+        <entry key="Camera Capture" value-ref= "CameraCapture"/>
         <!--控制平台相关指令-->
         <entry key="Move Absolute" value-ref= "MoveAbsolute"/>
         <entry key="Move Exit" value-ref= "MoveExit"/>
@@ -47,6 +52,7 @@
   </object>
   
   <!--具体命令-->
+  <!--相机相关操作指令-->
   <object id="StartCamera" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraStart, TimeLapse">
     <constructor-arg value="Start Camera"/>
   </object>
@@ -62,7 +68,12 @@
   <object id="CameraPosition" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraPosition, TimeLapse">
     <constructor-arg value="Camera Position"/>
   </object>
+
+  <object id="CameraCapture" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandCameraCapture, TimeLapse">
+    <constructor-arg value="Camera Capture"/>
+  </object>
   
+  <!--控制平台相关指令-->
   <object id="MoveAbsolute" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandMoveAbsolute, TimeLapse">
     <constructor-arg value="0"/>
     <constructor-arg value="0"/>

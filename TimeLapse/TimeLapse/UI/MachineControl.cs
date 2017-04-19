@@ -12,11 +12,17 @@ using TimeLapse.Operation.MobilityCommand;
 
 namespace TimeLapse.UI
 {
+    /// <summary>
+    /// 移动平台基本操作控件
+    /// </summary>
+    /// <remarks>
+    /// 公司：CII-TECH
+    /// 作者：钟文               
+    /// 创建日期：2017-4-8   
+    /// </remarks>
     public partial class MachineControl : UserControl
     {
-        private CommandQueue CommandQueue;
-
-        public Dictionary<string, Operation.Command> CommandFactory { get; set; }
+        public CommandFactory CommandFactory { get; set; }
         public bool IsFixedLength { get; set; }
         public int MotionStep { get; set; }
         public string StepUnit { get; set; }
@@ -69,20 +75,18 @@ namespace TimeLapse.UI
             {
                 if (IsLengthLegal(this.MotionStep))
                 {
-                    CommandMoveX commandMoveX = (CommandMoveX)CommandFactory["Move X"];
-                    commandMoveX.CommandName = "Move X";
+                    CommandMoveX commandMoveX = CommandFactory.CreateCommand<CommandMoveX>("Move X");
                     commandMoveX.MoveLength = -MotionStep;
-                    CommandQueue.Push(commandMoveX);
+                    CommandFactory.CommandQueue.Push(commandMoveX);
                 }
             }
             else
             {
                 if (IsLengthLegal(MotionSpeed))
                 {
-                    CommandSetMoveSpeedX commandSetMoveSpeedX = (CommandSetMoveSpeedX)CommandFactory["Set Move Speed X"];
-                    commandSetMoveSpeedX.CommandName = "Set Move Speed X";
+                    CommandSetMoveSpeedX commandSetMoveSpeedX = CommandFactory.CreateCommand<CommandSetMoveSpeedX>("Set Move Speed X");
                     commandSetMoveSpeedX.Speed = -MotionSpeed;
-                    CommandQueue.Push(commandSetMoveSpeedX);
+                    CommandFactory.CommandQueue.Push(commandSetMoveSpeedX);
                 }
             }
         }
@@ -93,20 +97,18 @@ namespace TimeLapse.UI
             {
                 if (IsLengthLegal(this.MotionStep))
                 {
-                    CommandMoveX commandMoveX = (CommandMoveX)CommandFactory["Move X"];
-                    commandMoveX.CommandName = "Move X";
+                    CommandMoveX commandMoveX = CommandFactory.CreateCommand<CommandMoveX>("Move X");
                     commandMoveX.MoveLength = MotionStep;
-                    CommandQueue.Push(commandMoveX);
+                    CommandFactory.CommandQueue.Push(commandMoveX);
                 }
             }
             else
             {
                 if (IsLengthLegal(MotionSpeed))
                 {
-                    CommandSetMoveSpeedX commandSetMoveSpeedX = (CommandSetMoveSpeedX)CommandFactory["Set Move Speed X"];
-                    commandSetMoveSpeedX.CommandName = "Set Move Speed X";
+                    CommandSetMoveSpeedX commandSetMoveSpeedX = CommandFactory.CreateCommand<CommandSetMoveSpeedX>("Set Move Speed X");
                     commandSetMoveSpeedX.Speed = MotionSpeed;
-                    CommandQueue.Push(commandSetMoveSpeedX);
+                    CommandFactory.CommandQueue.Push(commandSetMoveSpeedX);
                 }
             }
         }
@@ -117,20 +119,18 @@ namespace TimeLapse.UI
             {
                 if (IsLengthLegal(this.MotionStep))
                 {
-                    CommandMoveY commandMoveY = (CommandMoveY)CommandFactory["Move Y"];
-                    commandMoveY.CommandName = "Move Y";
+                    CommandMoveY commandMoveY = CommandFactory.CreateCommand<CommandMoveY>("Move Y");
                     commandMoveY.MoveLength = -MotionStep;
-                    CommandQueue.Push(commandMoveY);
+                    CommandFactory.CommandQueue.Push(commandMoveY);
                 }
             }
             else
             {
                 if (IsLengthLegal(MotionSpeed))
                 {
-                    CommandSetMoveSpeedY commandSetMoveSpeedY = (CommandSetMoveSpeedY)CommandFactory["Set Move Speed Y"];
-                    commandSetMoveSpeedY.CommandName = "Set Move Speed Y";
+                    CommandSetMoveSpeedY commandSetMoveSpeedY = CommandFactory.CreateCommand<CommandSetMoveSpeedY>("Set Move Speed Y");
                     commandSetMoveSpeedY.Speed = -MotionSpeed;
-                    CommandQueue.Push(commandSetMoveSpeedY);
+                    CommandFactory.CommandQueue.Push(commandSetMoveSpeedY);
                 }
             }
         }
@@ -141,20 +141,18 @@ namespace TimeLapse.UI
             {
                 if (IsLengthLegal(this.MotionStep))
                 {
-                    CommandMoveY commandMoveY = (CommandMoveY)CommandFactory["Move Y"];
-                    commandMoveY.CommandName = "Move Y";
+                    CommandMoveY commandMoveY = CommandFactory.CreateCommand<CommandMoveY>("Move Y");
                     commandMoveY.MoveLength = MotionStep;
-                    CommandQueue.Push(commandMoveY);
+                    CommandFactory.CommandQueue.Push(commandMoveY);
                 }
             }
             else
             {
                 if (IsLengthLegal(MotionSpeed))
                 {
-                    CommandSetMoveSpeedY commandSetMoveSpeedY = (CommandSetMoveSpeedY)CommandFactory["Set Move Speed Y"];
-                    commandSetMoveSpeedY.CommandName = "Set Move Speed Y";
+                    CommandSetMoveSpeedY commandSetMoveSpeedY = CommandFactory.CreateCommand<CommandSetMoveSpeedY>("Set Move Speed Y");
                     commandSetMoveSpeedY.Speed = MotionSpeed;
-                    CommandQueue.Push(commandSetMoveSpeedY);
+                    CommandFactory.CommandQueue.Push(commandSetMoveSpeedY);
                 }
             }
         }
@@ -165,20 +163,18 @@ namespace TimeLapse.UI
             {
                 if (IsLengthLegal(this.MotionStep))
                 {
-                    CommandMoveZ commandMoveZ = (CommandMoveZ)CommandFactory["Move Z"];
-                    commandMoveZ.CommandName = "Move Z";
+                    CommandMoveZ commandMoveZ = CommandFactory.CreateCommand<CommandMoveZ>("Move Z");
                     commandMoveZ.MoveLength = -MotionStep;
-                    CommandQueue.Push(commandMoveZ);
+                    CommandFactory.CommandQueue.Push(commandMoveZ);
                 }
             }
             else
             {
                 if (IsLengthLegal(MotionSpeed))
                 {
-                    CommandSetMoveSpeedZ commandSetMoveSpeedZ = (CommandSetMoveSpeedZ)CommandFactory["Set Move Speed Z"];
-                    commandSetMoveSpeedZ.CommandName = "Set Move Speed Z";
+                    CommandSetMoveSpeedZ commandSetMoveSpeedZ = CommandFactory.CreateCommand<CommandSetMoveSpeedZ>("Set Move Speed Z");
                     commandSetMoveSpeedZ.Speed = -MotionSpeed;
-                    CommandQueue.Push(commandSetMoveSpeedZ);
+                    CommandFactory.CommandQueue.Push(commandSetMoveSpeedZ);
                 }
             }
         }
@@ -189,32 +185,29 @@ namespace TimeLapse.UI
             {
                 if (IsLengthLegal(this.MotionStep))
                 {
-                    CommandMoveZ commandMoveZ = (CommandMoveZ)CommandFactory["Move Z"];
-                    commandMoveZ.CommandName = "Move Z";
+                    CommandMoveZ commandMoveZ = CommandFactory.CreateCommand<CommandMoveZ>("Move Z");
                     commandMoveZ.MoveLength = MotionStep;
-                    CommandQueue.Push(commandMoveZ);
+                    CommandFactory.CommandQueue.Push(commandMoveZ);
                 }
             }
             else
             {
                 if (IsLengthLegal(MotionSpeed))
                 {
-                    CommandSetMoveSpeedZ commandSetMoveSpeedZ = (CommandSetMoveSpeedZ)CommandFactory["Set Move Speed Z"];
-                    commandSetMoveSpeedZ.CommandName = "Set Move Speed Z";
+                    CommandSetMoveSpeedZ commandSetMoveSpeedZ = CommandFactory.CreateCommand<CommandSetMoveSpeedZ>("Set Move Speed Z");
                     commandSetMoveSpeedZ.Speed = MotionSpeed;
-                    CommandQueue.Push(commandSetMoveSpeedZ);
+                    CommandFactory.CommandQueue.Push(commandSetMoveSpeedZ);
                 }
             }
         }
 
         private void btnAbsulate_Click(object sender, EventArgs e)
         {
-            CommandMoveAbsolute commandMoveAbsolute = (CommandMoveAbsolute)CommandFactory["Move Absolute"];
-            commandMoveAbsolute.CommandName = "Move Absolute";
+            CommandMoveAbsolute commandMoveAbsolute = CommandFactory.CreateCommand<CommandMoveAbsolute>("Move Absolute");
             commandMoveAbsolute.X = this.inputAbsoluteX.Value;
             commandMoveAbsolute.Y = this.inputAbsoluteY.Value;
             commandMoveAbsolute.Z = this.inputAbsoluteZ.Value;
-            CommandQueue.Push(commandMoveAbsolute);
+            CommandFactory.CommandQueue.Push(commandMoveAbsolute);
         }
     }
 }

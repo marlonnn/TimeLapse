@@ -63,6 +63,26 @@ namespace TimeLapse.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap About {
+            get {
+                object obj = ResourceManager.GetObject("About", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap About1 {
+            get {
+                object obj = ResourceManager.GetObject("About1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Camera_Focus {
             get {
                 object obj = ResourceManager.GetObject("Camera_Focus", resourceCulture);
@@ -151,6 +171,42 @@ namespace TimeLapse.Properties {
         }
         
         /// <summary>
+        ///   查找类似 About{0} 的本地化字符串。
+        /// </summary>
+        internal static string StrAbout {
+            get {
+                return ResourceManager.GetString("StrAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Built Date: 的本地化字符串。
+        /// </summary>
+        internal static string StrBuiltDate {
+            get {
+                return ResourceManager.GetString("StrBuiltDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 CHINA INNOVATIN INSTRUMENT CO.,LTD 的本地化字符串。
+        /// </summary>
+        internal static string StrCompanyName {
+            get {
+                return ResourceManager.GetString("StrCompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Copyright © 2017 Cii-tech CO.,LTD 的本地化字符串。
+        /// </summary>
+        internal static string StrCopyRight {
+            get {
+                return ResourceManager.GetString("StrCopyRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Click Report to create a Technical Support Request. 的本地化字符串。
         /// </summary>
         internal static string StrCreateReport {
@@ -192,6 +248,15 @@ namespace TimeLapse.Properties {
         internal static string StrUnknownErrorMsg {
             get {
                 return ResourceManager.GetString("StrUnknownErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Warning: This computer program is protected by copyright law and international treaties. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law. 的本地化字符串。
+        /// </summary>
+        internal static string StrWarning {
+            get {
+                return ResourceManager.GetString("StrWarning", resourceCulture);
             }
         }
         

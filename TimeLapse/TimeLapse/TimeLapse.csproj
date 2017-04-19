@@ -104,11 +104,20 @@
     <Compile Include="DBADO\SlideADO.cs" />
     <Compile Include="DBADO\TransferADO.cs" />
     <Compile Include="DBADO\TreamentADO.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Operation\CommandFactory.cs" />
+    <Compile Include="Operation\MobilityCommand\CommandCameraCapture.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraPause.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraPosition.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraStart.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraClose.cs" />
     <Compile Include="Operation\MobilityCommand\CommandSetMoveResolution.cs" />
+    <Compile Include="UI\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\About.designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ChildForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +191,12 @@
     <Compile Include="UI\SplashScreenForm.Designer.cs">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\About.zh-CN.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +293,7 @@
     </Content>
     <None Include="Resources\Camera_Pause.png" />
     <None Include="Resources\Camera_Focus.png" />
+    <Content Include="Resources\About.png" />
     <Content Include="Resources\Camera_Setting.png" />
     <None Include="Resources\Camera_Start.png" />
     <None Include="Resources\Camera_Stop.png" />

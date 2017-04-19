@@ -11,6 +11,14 @@ using System.Windows.Forms;
 
 namespace TimeLapse.UI
 {
+    /// <summary>
+    /// 开始启动页面
+    /// </summary>
+    /// <remarks>
+    /// 公司：CII-TECH
+    /// 作者：钟文               
+    /// 创建日期：2017-3-7 
+    /// </remarks>
     public partial class SplashScreenForm : Form
     {
         private static SplashScreenForm _instance;

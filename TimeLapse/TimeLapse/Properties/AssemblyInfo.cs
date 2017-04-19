@@ -6,11 +6,12 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("TimeLapse")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Warning: This computer program is protected by copyright law and international treaties. Unauthorized reproduction or distribution of this " +
+                               "program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("acea")]
+[assembly: AssemblyCompany("CHINA INNOVATIN INSTRUMENT CO.,LTD")]
 [assembly: AssemblyProduct("TimeLapse")]
-[assembly: AssemblyCopyright("Copyright © acea 2017")]
+[assembly: AssemblyCopyright("Copyright © 2017 Cii-tech CO.,LTD")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

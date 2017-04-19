@@ -12,6 +12,15 @@ using TimeLapse.Operation.MobilityCommand;
 
 namespace TimeLapse.UI
 {
+    /// <summary>
+    /// 运动平台设置窗口
+    /// 提供IP地址、运动步长、运动速度、运动模式的设置
+    /// </summary>
+    /// <remarks>
+    /// 公司：CII-TECH
+    /// 作者：钟文
+    /// 时间：2017-4-10
+    /// </remarks>
     public partial class MachineSettingForm : ChildForm
     {
         public string IpAddress { get; set; }
@@ -24,9 +33,7 @@ namespace TimeLapse.UI
 
         public bool IsFixedLength { get; set; }
 
-        private CommandQueue CommandQueue;
-
-        public Dictionary<string, Operation.Command> CommandFactory { get; set; }
+        public CommandFactory CommandFactory { get; set; }
 
         public MachineSettingForm()
         {
@@ -50,24 +57,21 @@ namespace TimeLapse.UI
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            CommandMoveStart command = (CommandMoveStart)CommandFactory["Move Start"];
-            command.CommandName = "Move Start";
+            CommandMoveStart command = CommandFactory.CreateCommand<CommandMoveStart>("Move Start");
             command.IpAddress = this.ipAddressInput.Value;
-            CommandQueue.Push(command);
+            CommandFactory.CommandQueue.Push(command);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            CommandMoveHome command = (CommandMoveHome)CommandFactory["Move Home"];
-            command.CommandName = "Move Home";
-            CommandQueue.Push(command);
+            CommandMoveHome command = CommandFactory.CreateCommand<CommandMoveHome>("Move Home");
+            CommandFactory.CommandQueue.Push(command);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            CommandMoveExit command = (CommandMoveExit)CommandFactory["Move Exit"];
-            command.CommandName = "Move Exit";
-            CommandQueue.Push(command);
+            CommandMoveExit command = CommandFactory.CreateCommand<CommandMoveExit>("Move Exit");
+            CommandFactory.CommandQueue.Push(command);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

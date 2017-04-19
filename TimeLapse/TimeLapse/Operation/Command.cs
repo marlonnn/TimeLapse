@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace TimeLapse.Operation
 {
+    /// <summary>
+    /// 抽象命令，所有命令必须继承自抽象命令，实现该抽象方法
+    /// 包含相机和运动平台控制器
+    /// <remarks>
+    /// 公司：CII-TECH
+    /// 作者：钟文               
+    /// 创建日期：2017-4-10   
+    /// </remarks>
+    /// </summary>
     public abstract class Command
     {
         protected bool isExecuteComplete = false;

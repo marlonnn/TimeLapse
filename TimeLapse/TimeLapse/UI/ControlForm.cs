@@ -14,13 +14,22 @@ using TimeLapse.Operation.MobilityCommand;
 
 namespace TimeLapse.UI
 {
+    /// <summary>
+    /// 相机和运动平台调试窗口
+    /// 提供相机和运动平台基本控制指令的发送
+    /// </summary>
+    /// <remarks>
+    /// 公司：CII-TECH
+    /// 作者：钟文
+    /// 时间：2017-4-10 
+    /// </remarks>
     public partial class ControlForm : Office2007RibbonForm
     {
         private MachineSettingForm machineSettingForm;
 
-        private CommandQueue CommandQueue;
+        private About aboutForm;
 
-        public Dictionary<string, Operation.Command> CommandFactory { get; set; }
+        public CommandFactory CommandFactory { get; set; }
 
         public delegate void UpdateMotionPosition(float x, float xError, float y, float yError, float z, float zError);
         public delegate void UpdateMotionCtrls(bool isInitialized);
@@ -34,13 +43,13 @@ namespace TimeLapse.UI
 
         private void ControlForm_Load(object sender, EventArgs e)
         {
-            CommandCameraPosition commandCameraPosition = (CommandCameraPosition)CommandFactory["Camera Position"];
+            CommandCameraPosition commandCameraPosition = CommandFactory.CreateCommand<CommandCameraPosition>("Camera Position");
             commandCameraPosition.UpdateMotionPositionHandler += UpdateMotionPositionHandler;
 
-            CommandMoveStart commandMoveStart = (CommandMoveStart)CommandFactory["Move Start"];
+            CommandMoveStart commandMoveStart = CommandFactory.CreateCommand<CommandMoveStart>("Move Start");
             commandMoveStart.UpdateMotionCtrlsHandler += UpdateMotionCtrlsHandler;
 
-            CommandMoveExit commandMoveExit = (CommandMoveExit)CommandFactory["Move Exit"];
+            CommandMoveExit commandMoveExit = CommandFactory.CreateCommand<CommandMoveExit>("Move Exit");
             commandMoveExit.UpdateMotionCtrlsHandler += UpdateMotionCtrlsHandler;
         }
 
@@ -112,29 +121,27 @@ namespace TimeLapse.UI
 
         private void buttonItemStart_Click(object sender, EventArgs e)
         {
-            CommandCameraStart command = (CommandCameraStart)CommandFactory["Start Camera"];
-            command.CommandName = "Start Camera";
+            CommandCameraStart command = CommandFactory.CreateCommand<CommandCameraStart>("Start Camera");
             command.IntPtr = this.pictureBox.Handle;
-            CommandQueue.Push(command);
+            CommandFactory.CommandQueue.Push(command);
         }
 
         private void buttonItemPause_Click(object sender, EventArgs e)
         {
-            CommandCameraPause command = (CommandCameraPause)CommandFactory["Pause Camera"];
-            command.CommandName = "Pause Camera";
-            CommandQueue.Push(command);
+            CommandCameraPause command = CommandFactory.CreateCommand<CommandCameraPause>("Pause Camera");
+            CommandFactory.CommandQueue.Push(command);
         }
 
         private void buttonItemStop_Click(object sender, EventArgs e)
         {
-            CommandCameraClose command = (CommandCameraClose)CommandFactory["Close Camera"];
-            command.CommandName = "Close Camera";
-            CommandQueue.Push(command);
+            CommandCameraClose command = CommandFactory.CreateCommand<CommandCameraClose>("Close Camera");
+            CommandFactory.CommandQueue.Push(command);
         }
 
         private void buttonItemSnapShot_Click(object sender, EventArgs e)
         {
-
+            CommandCameraCapture command = CommandFactory.CreateCommand<CommandCameraCapture>("Camera Capture");
+            CommandFactory.CommandQueue.Push(command);
         }
 
         private void buttonItemAutoFocus_Click(object sender, EventArgs e)
@@ -152,10 +159,9 @@ namespace TimeLapse.UI
                 this.machineControl.StepUnit = machineSettingForm.StepUnit;
                 this.machineControl.IsFixedLength = machineControl.IsFixedLength;
 
-                CommandSetMoveResolution command = (CommandSetMoveResolution)CommandFactory["Set Move Resolution"];
-                command.CommandName = "Set Move Resolution";
+                CommandSetMoveResolution command = CommandFactory.CreateCommand<CommandSetMoveResolution>("Set Move Resolution");
                 command.Resolution = CalculateResolution(this.machineControl.StepUnit);
-                CommandQueue.Push(command);
+                CommandFactory.CommandQueue.Push(command);
             }
             machineSettingForm.Dispose();
         }
@@ -180,7 +186,9 @@ namespace TimeLapse.UI
 
         private void buttonItemAbout_Click(object sender, EventArgs e)
         {
-
+            aboutForm = SpringHelper.GetObject<About>("aboutForm");
+            aboutForm.ShowDialog();
+            aboutForm.Dispose();
         }
     }
 }
