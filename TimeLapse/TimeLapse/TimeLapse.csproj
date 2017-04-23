@@ -112,6 +112,9 @@
     <Compile Include="Operation\MobilityCommand\CommandCameraStart.cs" />
     <Compile Include="Operation\MobilityCommand\CommandCameraClose.cs" />
     <Compile Include="Operation\MobilityCommand\CommandSetMoveResolution.cs" />
+    <Compile Include="Operation\MobilityThread.cs" />
+    <Compile Include="Operation\MobilityUtil.cs" />
+    <Compile Include="Operation\OperationThread.cs" />
     <Compile Include="UI\About.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,9 +151,6 @@
     <Compile Include="Operation\MobilityCommand\CommandMoveZ.cs" />
     <Compile Include="Operation\MobilityCommand\CommandMoveY.cs" />
     <Compile Include="Operation\MobilityCommand\CommandMoveX.cs" />
-    <Compile Include="Operation\MobilityCommand\CommandSetMoveResolutionZ.cs" />
-    <Compile Include="Operation\MobilityCommand\CommandSetMoveResolutionY.cs" />
-    <Compile Include="Operation\MobilityCommand\CommandSetMoveResolutionX.cs" />
     <Compile Include="Operation\MobilityCommand\CommandSetMoveSpeedZ.cs" />
     <Compile Include="Operation\MobilityCommand\CommandSetMoveSpeedY.cs" />
     <Compile Include="Operation\MobilityCommand\CommandSetMoveSpeedX.cs" />

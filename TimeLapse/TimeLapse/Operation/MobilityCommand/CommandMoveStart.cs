@@ -32,6 +32,7 @@ namespace TimeLapse.Operation.MobilityCommand
                 bool success = MobilityController.Init(ipAddress);
                 if (UpdateMotionCtrlsHandler != null && success)
                 {
+                    MobilityUtil.MobilityInitialized = true;
                     UpdateMotionCtrlsHandler(success);
                 }
                 return success;

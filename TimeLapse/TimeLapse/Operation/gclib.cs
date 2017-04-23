@@ -28,8 +28,8 @@ namespace TimeLapse.Operation
     {
         public static class LibraryPath
         {
-            public const string GclibDllPath_ = @".\References\gclib\x64\gclib.dll";
-            public const string GcliboDllPath_ = @".\References\gclib\x64\gclibo.dll";
+            public const string GclibDllPath_ = "gclib.dll";
+            public const string GcliboDllPath_ = "gclibo.dll";
         }
 
         private const int BufferSize_ = 500000; //size of "char *" buffer. Big enough to fit entire 4000 program via UL/LS, or 24000 elements of array data.

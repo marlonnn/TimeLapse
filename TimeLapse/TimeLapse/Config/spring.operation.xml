@@ -30,9 +30,9 @@
         <entry key="Move Y" value-ref= "MoveY"/>
         <entry key="Move Z" value-ref= "MoveZ"/>
         <entry key="Set Move Resolution" value-ref= "SetMoveResolution"/>
-        <entry key="Set Move Resolution X" value-ref= "SetMoveResolutionX"/>
+        <!--<entry key="Set Move Resolution X" value-ref= "SetMoveResolutionX"/>
         <entry key="Set Move Resolution Y" value-ref= "SetMoveResolutionY"/>
-        <entry key="Set Move Resolution Z" value-ref= "SetMoveResolutionZ"/>
+        <entry key="Set Move Resolution Z" value-ref= "SetMoveResolutionZ"/>-->
         <entry key="Start Move X With Speed" value-ref= "StartMoveXWithSpeed"/>
         <entry key="Start Move Y With Speed" value-ref= "StartMoveYWithSpeed"/>
         <entry key="Start Move Z With Speed" value-ref= "StartMoveZWithSpeed"/>
@@ -106,7 +106,7 @@
     <constructor-arg value="0"/>
     <constructor-arg value="Set Move Resolution"/>
   </object>
-  <object id="SetMoveResolutionX" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionX, TimeLapse" >
+  <!--<object id="SetMoveResolutionX" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionX, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Set Move Resolution X"/>
   </object>
@@ -117,7 +117,7 @@
   <object id="SetMoveResolutionZ" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandSetMoveResolutionZ, TimeLapse" >
     <constructor-arg value="0"/>
     <constructor-arg value="Set Move Resolution Z"/>
-  </object>
+  </object>-->
   <object id="StartMoveXWithSpeed" parent="abstractCommand" type="TimeLapse.Operation.MobilityCommand.CommandStartMoveXWithSpeed, TimeLapse">
     <constructor-arg value="0"/>
     <constructor-arg value="Start Move X With Speed"/>
@@ -156,9 +156,7 @@
 
   <object id="mobilityController" type="TimeLapse.Operation.HDSMobilityController, TimeLapse">
     <property name="gclib" ref="gclib" />
-    <property name="ResolutionX" value="10000"/><!--光栅分辨率-->
-    <property name="ResolutionY" value="20000"/><!--光栅分辨率-->
-    <property name="ResolutionZ" value="20000"/><!--光栅分辨率-->
+    <property name="Resolution" value="20000"/><!--光栅分辨率-->
     <property name="DEFAULT_IP_ADDRESS" value ="10.0.0.100"/><!--默认IP-->
     <property name="AXIS_ENABLE" value ="SH"/><!--轴使能，使外界力不能移动轴+（A,B）-->
     <property name="AXIS_RELEASE" value ="MO"/><!--释放 电机关断-->

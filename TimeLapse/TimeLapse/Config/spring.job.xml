@@ -2,7 +2,7 @@
 <!--复制此文档各种Ioc定义方式到需要的地方-->
 <objects xmlns="http://www.springframework.net">
 
-  <object id="commandsJob" type="Spring.Scheduling.Quartz.MethodInvokingJobDetailFactoryObject, Spring.Scheduling.Quartz20">
+  <!--<object id="commandsJob" type="Spring.Scheduling.Quartz.MethodInvokingJobDetailFactoryObject, Spring.Scheduling.Quartz20">
     <property name="TargetObject" ref="operationFactory" />
     <property name="TargetMethod" value="ExecuteInternal" />
     <property name="concurrent" value="false" />
@@ -33,6 +33,14 @@
         <ref object="mobilityTrigger" />
       </list>
     </property>
+  </object>-->
+
+
+  <object id="operationThread" type="TimeLapse.Operation.OperationThread, TimeLapse">
+    <property name ="CommandFactory" ref="CommandFactory"/>
   </object>
-  
+
+  <object id="mobilityThread" type="TimeLapse.Operation.MobilityThread, TimeLapse">
+    <property name ="CommandFactory" ref="CommandFactory"/>
+  </object>
 </objects>

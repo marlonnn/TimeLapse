@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeLapse.Operation;
@@ -25,7 +26,7 @@ namespace TimeLapse.UI
     /// </remarks>
     public partial class ControlForm : Office2007RibbonForm
     {
-        private MachineSettingForm machineSettingForm;
+        //private MachineSettingForm machineSettingForm;
 
         private About aboutForm;
 
@@ -34,15 +35,31 @@ namespace TimeLapse.UI
         public delegate void UpdateMotionPosition(float x, float xError, float y, float yError, float z, float zError);
         public delegate void UpdateMotionCtrls(bool isInitialized);
 
+
+        private OperationThread operationThread;
+        private MobilityThread mobilityThread;
+
+        private Thread Operation;
+        private Thread Mobility;
         public ControlForm()
         {
             InitializeComponent();
             this.KeyDown += ControlForm_KeyDown;
             this.Load += ControlForm_Load;
+            this.FormClosing += ControlForm_FormClosing;
+        }
+
+        private void ControlForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            operationThread.Stop();
+            //mobilityThread.Stop();
+            Operation.Abort();
+            //Mobility.Abort();
         }
 
         private void ControlForm_Load(object sender, EventArgs e)
         {
+            this.machineControl.CommandFactory = CommandFactory;
             CommandCameraPosition commandCameraPosition = CommandFactory.CreateCommand<CommandCameraPosition>("Camera Position");
             commandCameraPosition.UpdateMotionPositionHandler += UpdateMotionPositionHandler;
 
@@ -51,6 +68,14 @@ namespace TimeLapse.UI
 
             CommandMoveExit commandMoveExit = CommandFactory.CreateCommand<CommandMoveExit>("Move Exit");
             commandMoveExit.UpdateMotionCtrlsHandler += UpdateMotionCtrlsHandler;
+
+            Operation = new Thread(new ThreadStart(operationThread.ExecuteInternal));
+            operationThread.Start();
+            Operation.Start();
+
+            //Mobility = new Thread(new ThreadStart(mobilityThread.ExecuteInternal));
+            //mobilityThread.Start();
+            //Mobility.Start();
         }
 
         public void UpdateMotionCtrlsHandler(bool isOpen)
@@ -61,10 +86,7 @@ namespace TimeLapse.UI
             }
             else
             {
-                if (machineSettingForm != null)
-                {
-                    this.machineSettingForm.UpdateMobilityStatus(isOpen);
-                }
+                this.machineControl.UpdateMobilityStatus(isOpen);
                 this.machineControl.UpdateMotionCtrls(isOpen);
             }
         }
@@ -151,19 +173,19 @@ namespace TimeLapse.UI
 
         private void buttonItemMachine_Click(object sender, EventArgs e)
         {
-            machineSettingForm = SpringHelper.GetObject<MachineSettingForm>("machineSettingForm");
-            if (machineSettingForm.ShowDialog() == DialogResult.OK )
-            {
-                this.machineControl.MotionStep = machineSettingForm.MotionStep;
-                this.machineControl.MotionSpeed = machineSettingForm.MotionSpeed;
-                this.machineControl.StepUnit = machineSettingForm.StepUnit;
-                this.machineControl.IsFixedLength = machineControl.IsFixedLength;
+            //machineSettingForm = SpringHelper.GetObject<MachineSettingForm>("machineSettingForm");
+            //if (machineSettingForm.ShowDialog() == DialogResult.OK )
+            //{
+            //    this.machineControl.MotionStep = machineSettingForm.MotionStep;
+            //    this.machineControl.MotionSpeed = machineSettingForm.MotionSpeed;
+            //    this.machineControl.StepUnit = machineSettingForm.StepUnit;
+            //    this.machineControl.IsFixedLength = machineSettingForm.IsFixedLength;
 
-                CommandSetMoveResolution command = CommandFactory.CreateCommand<CommandSetMoveResolution>("Set Move Resolution");
-                command.Resolution = CalculateResolution(this.machineControl.StepUnit);
-                CommandFactory.CommandQueue.Push(command);
-            }
-            machineSettingForm.Dispose();
+            //    CommandSetMoveResolution command = CommandFactory.CreateCommand<CommandSetMoveResolution>("Set Move Resolution");
+            //    command.Resolution = CalculateResolution(this.machineControl.StepUnit);
+            //    CommandFactory.CommandQueue.Push(command);
+            //}
+            //machineSettingForm.Dispose();
         }
 
         private int CalculateResolution(string stepUnit)

@@ -21,9 +21,9 @@ namespace TimeLapse.Operation.MobilityCommand
             try
             {
                 bool success = MobilityController.CloseGCLib();
-                if (UpdateMotionCtrlsHandler != null && !success)
+                if (UpdateMotionCtrlsHandler != null && success)
                 {
-                    UpdateMotionCtrlsHandler(success);
+                    UpdateMotionCtrlsHandler(!success);
                 }
                 return success;
             }

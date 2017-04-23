@@ -9,10 +9,12 @@
   <!--For Debug-->
   <object name="controlForm" type="TimeLapse.UI.ControlForm, TimeLapse">
     <property name="CommandFactory" ref="CommandFactory"/>
+    <property name="operationThread" ref="operationThread"/>
+    <property name="mobilityThread" ref="mobilityThread"/>
   </object>
 
   <!--Machine Setting Form-->
-  <object name="machineSettingForm" type="TimeLapse.UI.MachineSettingForm, TimeLapse"
+  <!--<object name="machineSettingForm" type="TimeLapse.UI.MachineSettingForm, TimeLapse"
           singleton="false">
     <property name="CommandFactory" ref="CommandFactory"/>
     <property name="IpAddress" value="10.0.0.100"/>
@@ -20,7 +22,7 @@
     <property name="StepUnit" value="50nm"/>
     <property name="MotionSpeed" value="1"/>
     <property name="IsFixedLength" value="true"/>
-  </object>
+  </object>-->
 
   <object name="aboutForm" type="TimeLapse.UI.About, TimeLapse" singleton="false">
   </object>

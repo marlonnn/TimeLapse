@@ -24,27 +24,6 @@ namespace TimeLapse.Operation
         public abstract bool SetResolution(int r);
 
         /// <summary>
-        /// 设置移动单位，移动单位为控制器最小移动距离*r
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public abstract bool SetResolutionX(int r);
-
-        /// <summary>
-        /// 设置移动单位，移动单位为控制器最小移动距离*r
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public abstract bool SetResolutionY(int r);
-
-        /// <summary>
-        /// 设置移动单位，移动单位为控制器最小移动距离*r
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public abstract bool SetResolutionZ(int r);
-
-        /// <summary>
         /// 回到零点
         /// </summary>
         /// <returns></returns>

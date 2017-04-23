@@ -83,5 +83,30 @@ namespace TimeLapse.UI
             this.IsFixedLength = this.cbxMotionMode.SelectedItem.ToString() == "Fixed Length" ? true : false;
             this.DialogResult = DialogResult.OK;
         }
+
+        private void ipAddressInput_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inputStep_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -66,6 +66,7 @@
             this.labelX1.Size = new System.Drawing.Size(75, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "Motion Step:";
+            this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
             // 
             // labelX2
             // 
@@ -107,6 +108,7 @@
             this.inputStep.Size = new System.Drawing.Size(101, 23);
             this.inputStep.TabIndex = 8;
             this.inputStep.Value = 1;
+            this.inputStep.ValueChanged += new System.EventHandler(this.inputStep_ValueChanged);
             // 
             // cbxStepUnit
             // 
@@ -172,6 +174,7 @@
             this.ipAddressInput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ipAddressInput.TabIndex = 22;
             this.ipAddressInput.Value = "10.0.0.100";
+            this.ipAddressInput.Click += new System.EventHandler(this.ipAddressInput_Click);
             // 
             // btnStart
             // 
@@ -222,6 +225,7 @@
             this.labelX4.Size = new System.Drawing.Size(41, 23);
             this.labelX4.TabIndex = 26;
             this.labelX4.Text = "Status:";
+            this.labelX4.Click += new System.EventHandler(this.labelX4_Click);
             // 
             // labelStatus
             // 
@@ -234,6 +238,7 @@
             this.labelStatus.Size = new System.Drawing.Size(75, 23);
             this.labelStatus.TabIndex = 27;
             this.labelStatus.Text = "OFF";
+            this.labelStatus.Click += new System.EventHandler(this.labelStatus_Click);
             // 
             // btnSave
             // 
@@ -330,6 +335,7 @@
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
+            this.DoubleBuffered = true;
             this.Name = "MachineSettingForm";
             this.Text = "MachineSettingForm";
             ((System.ComponentModel.ISupportInitialize)(this.inputStep)).EndInit();

@@ -17,9 +17,9 @@ namespace TimeLapse.Operation
         private Gclib gclib;
 
         #region 常用命令
-        private float ResolutionX = 10000;//光栅分辨率
-        private float ResolutionY = 20000;//光栅分辨率
-        private float ResolutionZ = 20000;//光栅分辨率
+        //private float ResolutionX = 20000;//光栅分辨率
+        //private float ResolutionY = 20000;//光栅分辨率
+        private float Resolution = 20000;//光栅分辨率
         public string DEFAULT_IP_ADDRESS = "10.0.0.100";//默认IP      
         public string AXIS_ENABLE = "SH";//轴使能，使外界力不能移动轴+（A,B）
         public string AXIS_RELEASE = "MO";//释放 电机关断
@@ -52,9 +52,9 @@ namespace TimeLapse.Operation
             {
                 mutex.WaitOne();
                 gclib.GOpen(ipAddress + " --direct --subscribe ALL");
-                gclib.GCommand("pRESX=" + ResolutionX.ToString());
-                gclib.GCommand("pRESY=" + ResolutionY.ToString());
-                gclib.GCommand("pRESZ=" + ResolutionZ.ToString());
+                gclib.GCommand("pRESX=" + Resolution.ToString());
+                gclib.GCommand("pRESY=" + Resolution.ToString());
+                gclib.GCommand("pRESZ=" + Resolution.ToString());
                 gclib.GCommand(STOP);
                 gclib.GCommand(AXIS_RELEASE);
                 //轴使能
@@ -78,40 +78,7 @@ namespace TimeLapse.Operation
         /// <returns></returns>
         public override bool SetResolution(int r)
         {
-            ResolutionX = r;
-            return true;
-        }
-
-        /// <summary>
-        /// 设置光栅分辨率
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public override bool SetResolutionX(int r)
-        {
-            ResolutionX = r;
-            return true;
-        }
-
-        /// <summary>
-        /// 设置光栅分辨率
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public override bool SetResolutionY(int r)
-        {
-            ResolutionY = r;
-            return true;
-        }
-
-        /// <summary>
-        /// 设置光栅分辨率
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public override bool SetResolutionZ(int r)
-        {
-            ResolutionZ = r;
+            Resolution = r;
             return true;
         }
 
@@ -290,7 +257,7 @@ namespace TimeLapse.Operation
         {
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
-            gclib.GCommand("SP" + speed * ResolutionX);
+            gclib.GCommand("SP" + speed * Resolution);
             mutex.ReleaseMutex();
             return true;
         }
@@ -304,7 +271,7 @@ namespace TimeLapse.Operation
         {
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
-            gclib.GCommand("SPB" + speed * ResolutionY);
+            gclib.GCommand("SPB" + speed * Resolution);
             mutex.ReleaseMutex();
             return true;
         }
@@ -318,7 +285,7 @@ namespace TimeLapse.Operation
         {
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
-            gclib.GCommand("SPC" + speed * ResolutionZ);
+            gclib.GCommand("SPC" + speed * Resolution);
             mutex.ReleaseMutex();
             return true;
         }
@@ -335,7 +302,7 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
             //设置相对移动位移
-            gclib.GCommand("JG" + speed * ResolutionX);
+            gclib.GCommand("JG" + speed * Resolution);
             //开始移动
             gclib.GCommand("BGA");
             mutex.ReleaseMutex();
@@ -354,7 +321,7 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
             //设置相对移动位移
-            gclib.GCommand("JG," + speed * ResolutionY);
+            gclib.GCommand("JG," + speed * Resolution);
             //开始移动
             gclib.GCommand("BGB");
             mutex.ReleaseMutex();
@@ -373,7 +340,7 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
             //设置相对移动位移
-            gclib.GCommand("JG,," + speed * ResolutionZ);
+            gclib.GCommand("JG,," + speed * Resolution);
             //开始移动
             gclib.GCommand("BGC");
             mutex.ReleaseMutex();
@@ -444,12 +411,12 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             try
             {
-                mutex.WaitOne();
+                //mutex.WaitOne();
                 //设置相对移动位移
-                gclib.GCommand("PR" + len * ResolutionX);
+                gclib.GCommand("PR" + len * Resolution);
                 //开始移动
                 gclib.GCommand("BGA");
-                mutex.ReleaseMutex();
+                //mutex.ReleaseMutex();
             }
             catch (Exception e)
             {
@@ -474,12 +441,12 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             try
             {
-                mutex.WaitOne();
+                //mutex.WaitOne();
                 //设置相对移动位移
-                gclib.GCommand("PR," + len * ResolutionY);
+                gclib.GCommand("PR," + len * Resolution);
                 //开始移动
                 gclib.GCommand("BGB");
-                mutex.ReleaseMutex();
+                //mutex.ReleaseMutex();
             }
             catch (Exception e)
             {
@@ -503,12 +470,12 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             try
             {
-                mutex.WaitOne();
+                //mutex.WaitOne();
                 //设置相对移动位移
-                gclib.GCommand("PR,," + len * ResolutionZ);
+                gclib.GCommand("PR,," + len * Resolution);
                 //开始移动
                 gclib.GCommand("BGC");
-                mutex.ReleaseMutex();
+                //mutex.ReleaseMutex();
             }
             catch (Exception)
             {
@@ -533,7 +500,7 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
             //设置绝对移动位移
-            gclib.GCommand("PA" + posA * ResolutionX + "," + posB * ResolutionY + "," + posC * ResolutionZ);
+            gclib.GCommand("PA" + posA * Resolution + "," + posB * Resolution + "," + posC * Resolution);
             //开始移动
             gclib.GCommand("BGABC");
             mutex.ReleaseMutex();
@@ -552,7 +519,7 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
             //设置绝对移动位移
-            gclib.GCommand("PA" + posA * ResolutionX + "," + posB * ResolutionY);
+            gclib.GCommand("PA" + posA * Resolution + "," + posB * Resolution);
             //开始移动
             gclib.GCommand("BGAB");
             mutex.ReleaseMutex();
@@ -569,7 +536,7 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
             //设置相对移动位移
-            gclib.GCommand("PA" + pos * ResolutionX);
+            gclib.GCommand("PA" + pos * Resolution);
             //开始移动
             gclib.GCommand("BGA");
             mutex.ReleaseMutex();
@@ -586,7 +553,7 @@ namespace TimeLapse.Operation
             CheckAndThrowGclibNullException();
             mutex.WaitOne();
             //设置相对移动位移
-            gclib.GCommand("PA," + pos * ResolutionY);
+            gclib.GCommand("PA," + pos * Resolution);
             //开始移动
             gclib.GCommand("BGB");
             mutex.ReleaseMutex();
