@@ -20,7 +20,7 @@ namespace TimeLapse
             try
             {
                 //初始化MiniDump
-                MiniDump.Init();
+                //MiniDump.Init();
 
                 SplashScreenForm.ShowSplash();
 
