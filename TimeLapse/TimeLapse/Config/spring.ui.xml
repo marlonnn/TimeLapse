@@ -23,7 +23,16 @@
     <property name="MotionSpeed" value="1"/>
     <property name="IsFixedLength" value="true"/>
   </object>-->
+  <object name="mobilityForm" type="TimeLapse.UI.MobilityForm, TimeLapse" singleton="false">
+    <property name="CommandFactory" ref="CommandFactory"/>
+    <property name="mobilityThread" ref="mobilityThread"/>
+    <property name="autoFocusForm" ref="autoFocusForm"/>
+  </object>
 
+  <object name="autoFocusForm" type="TimeLapse.UI.AutoFocusForm, TimeLapse" singleton="false">
+    <property name="CommandFactory" ref="CommandFactory"/>
+  </object>
+  
   <object name="aboutForm" type="TimeLapse.UI.About, TimeLapse" singleton="false">
   </object>
 </objects>

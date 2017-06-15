@@ -20,21 +20,21 @@ namespace TimeLapse
             try
             {
                 //初始化MiniDump
-                //MiniDump.Init();
+                MiniDump.Init();
 
-                SplashScreenForm.ShowSplash();
+                //SplashScreenForm.ShowSplash();
 
 
-                SplashScreenForm.CloseSplash();
+                //SplashScreenForm.CloseSplash();
 
+                MobilityForm mobilityForm = SpringHelper.GetObject<MobilityForm>("mobilityForm");
+                Application.Run(mobilityForm);
                 //MainForm mainForm = SpringHelper.GetObject<MainForm>("mainForm");
-                ControlForm controlForm = SpringHelper.GetObject<ControlForm>("controlForm");
-                Application.Run(controlForm);
+                //ControlForm controlForm = SpringHelper.GetObject<ControlForm>("controlForm");
+                //Application.Run(controlForm);
             }
             catch (Exception e)
             {
-
-                throw e;
             }
         }
 

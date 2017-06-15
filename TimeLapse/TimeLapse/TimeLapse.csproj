@@ -49,6 +49,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="Emgu.CV.UI, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.World, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\Emgu.CV.World.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\log4net.dll</HintPath>
@@ -104,6 +112,9 @@
     <Compile Include="DBADO\SlideADO.cs" />
     <Compile Include="DBADO\TransferADO.cs" />
     <Compile Include="DBADO\TreamentADO.cs" />
+    <Compile Include="Images\Frame.cs" />
+    <Compile Include="Images\SharpnessAlgorithm.cs" />
+    <Compile Include="Images\SharpnessImage.cs" />
     <Compile Include="SystemDevice\Cell.cs" />
     <Compile Include="SystemDevice\Device.cs" />
     <Compile Include="ExtensionMethods.cs" />
@@ -119,11 +130,18 @@
     <Compile Include="Operation\OperationThread.cs" />
     <Compile Include="SystemDevice\Position.cs" />
     <Compile Include="SystemDevice\Slide.cs" />
+    <Compile Include="SystemFunction\IOUtil.cs" />
     <Compile Include="UI\About.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\About.designer.cs">
       <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AutoFocusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AutoFocusForm.Designer.cs">
+      <DependentUpon>AutoFocusForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ChildForm.cs">
       <SubType>Form</SubType>
@@ -171,6 +189,12 @@
     <Compile Include="SystemFunction\MiniDump.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\LogListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\LogListView.Designer.cs">
+      <DependentUpon>LogListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MachineControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -182,6 +206,12 @@
     </Compile>
     <Compile Include="UI\MachineSettingForm.Designer.cs">
       <DependentUpon>MachineSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MobilityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MobilityForm.Designer.cs">
+      <DependentUpon>MobilityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ProblemReportForm.cs">
       <SubType>Form</SubType>
@@ -200,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\About.zh-CN.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AutoFocusForm.resx">
+      <DependentUpon>AutoFocusForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
@@ -228,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MachineSettingForm.resx">
       <DependentUpon>MachineSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MobilityForm.resx">
+      <DependentUpon>MobilityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
@@ -299,6 +335,8 @@
     </Content>
     <Content Include="References\C5.dll" />
     <Content Include="References\Common.Logging.dll" />
+    <Content Include="References\Emgu.CV.UI.dll" />
+    <Content Include="References\Emgu.CV.World.dll" />
     <Content Include="References\log4net.dll" />
     <Content Include="References\Quartz.dll" />
     <Content Include="References\Spring.Aop.dll" />

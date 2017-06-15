@@ -42,5 +42,6 @@
 
   <object id="mobilityThread" type="TimeLapse.Operation.MobilityThread, TimeLapse">
     <property name ="CommandFactory" ref="CommandFactory"/>
+    <property name ="Device" ref="device"/>
   </object>
 </objects>
